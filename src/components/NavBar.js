@@ -8,6 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Logo from '../images/no-pain-no-gain.png';
 import { Person, Cart, Search } from 'react-bootstrap-icons';
 
+// TO DO LIST :
 // Decide breakpoint and refactor all the 'expand'
 // Refactor component prop
 // Standardize padding/spacing on navbar
