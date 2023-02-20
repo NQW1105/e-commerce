@@ -6,7 +6,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Logo from '../images/no-pain-no-gain.png';
-import { Person, Cart, Search } from 'react-bootstrap-icons';
+import { Person, Cart, Search, Outlet } from 'react-bootstrap-icons';
+import { LinkContainer } from 'react-router-bootstrap';
+import { NavLink } from 'react-bootstrap';
 
 // TO DO LIST :
 // Decide breakpoint and refactor all the 'expand'
@@ -17,19 +19,21 @@ function NavBar() {
   const expand = 'md';
 
   return (
-    <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+    <Navbar key={expand} bg="light" expand={expand} className="">
       <Container fluid>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
-        <Navbar.Brand href="#home">
-          <img
-            src={Logo}
-            width="88"
-            height="88"
-            className="d-inline-block align-top"
-            alt="React Bootstrap logo"
-          />
-        </Navbar.Brand>
+        <LinkContainer to="home">
+          <Navbar.Brand href="#home">
+            <img
+              src={Logo}
+              width="88"
+              height="88"
+              className="d-inline-block align-top"
+              alt="Brand logo"
+            />
+          </Navbar.Brand>
+        </LinkContainer>
 
         <Navbar.Offcanvas
           id={`offcanvasNavbar-expand-${expand}`}
@@ -55,54 +59,44 @@ function NavBar() {
                   className=""
                 />
               </InputGroup>
+
               <NavDropdown
                 className="order-md-1"
                 title="Promotions"
                 id={`offcanvasNavbarDropdown-expand-${expand}`}
               >
-                <NavDropdown.Item href="#action3">
-                  New Arrivals
-                </NavDropdown.Item>
-                <NavDropdown
-                  className="px-2"
-                  title="Best Sellers"
-                  id="best-sellers"
-                  drop="end"
-                >
-                  <NavDropdown.Item href="#action4">
-                    Creatine Monohydrate
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Whey Protein
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
-                    Pre-Workout
-                  </NavDropdown.Item>
-                </NavDropdown>
-
+                <LinkContainer to="promotion">
+                  <NavDropdown.Item>New Arrivals</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="promotion2">
+                  <NavDropdown.Item>Best Sellers</NavDropdown.Item>
+                </LinkContainer>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Clearance Sales
-                </NavDropdown.Item>
+                <LinkContainer to="promotion3">
+                  <NavDropdown.Item>Clearance Sales</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
+
               <NavDropdown
                 className="order-md-2"
                 title="Products"
                 id={`offcanvasNavbarDropdown-expand-${expand}`}
               >
-                <NavDropdown.Item href="#action4">
-                  Creatine Monohydrates
-                </NavDropdown.Item>
+                <LinkContainer to="product">
+                  <NavDropdown.Item>Creatine Monohydrates</NavDropdown.Item>
+                </LinkContainer>
                 <NavDropdown
                   className="px-2"
                   title="Pre-Workout"
                   id=""
                   drop="end"
                 >
-                  <NavDropdown.Item href="#action3">BCAA</NavDropdown.Item>
-                  <NavDropdown.Item href="#action3">
-                    Energy Drinks
-                  </NavDropdown.Item>
+                  <LinkContainer to="product2">
+                    <NavDropdown.Item>BCAA</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="product3">
+                    <NavDropdown.Item>Energy Drinks</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
                 <NavDropdown
                   className="px-2"
@@ -110,20 +104,22 @@ function NavBar() {
                   id=""
                   drop="end"
                 >
-                  <NavDropdown.Item href="#action3">
-                    Whey Protein
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action3">
-                    Whey Protein Isolates
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action3">
-                    Vegan Protein
-                  </NavDropdown.Item>
+                  <LinkContainer to="product4">
+                    <NavDropdown.Item>Whey Protein</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="product5">
+                    <NavDropdown.Item>Whey Protein Isolates</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="product6">
+                    <NavDropdown.Item>Vegan Protein</NavDropdown.Item>
+                  </LinkContainer>
                 </NavDropdown>
               </NavDropdown>
-              <Nav.Link className="order-md-3" href="#action2">
-                Contact Us
-              </Nav.Link>
+              <LinkContainer to="contact">
+                <Nav.Link className="order-md-3" href="contact">
+                  Contact Us
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

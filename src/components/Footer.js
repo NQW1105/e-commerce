@@ -14,6 +14,7 @@ import {
 // Improve the padding/layout/font size
 // Make payment svg (visa, mc, amex, paypal) to colorful version
 // Hover effect on links/symbols
+// Responsive in small screen
 
 const Footer = () => {
   return (

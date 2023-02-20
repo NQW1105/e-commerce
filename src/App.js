@@ -1,6 +1,14 @@
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
 import { Helmet } from 'react-helmet';
+
+// React-Bootstrap Components
+import NavBar from './components/NavBar';
+
+// React Components
+import Promotion from './Pages/Promotion';
+import Product from './Pages/Product';
+import Contact from './Pages/Contact';
+import Footer from './components/Footer';
+import { Outlet } from 'react-router-dom';
 
 // Some sample or inspiration websites
 // muscletech.com
@@ -20,6 +28,10 @@ function App() {
         />
       </Helmet>
       <NavBar />
+      <Outlet />
+      {/* <Promotion />
+      <Product />
+      <Contact /> */}
       <Footer />
     </div>
   );
