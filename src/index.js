@@ -3,21 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+
+// App Pages
 import Promotion from './Pages/Promotion';
 import Product from './Pages/Product';
 import Contact from './Pages/Contact';
 import Home from './Pages/Home';
 import Error from './Pages/Error';
 
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Terms from './Pages/FooterSection/Terms';
+import AboutUs from './Pages/FooterSection/AboutUs';
+import RefundPolicy from './Pages/FooterSection/RefundPolicy';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
-      { path: 'home', element: <Home /> },
+      { index: true, element: <Home /> },
       {
         path: 'promotion',
         element: <Promotion />,
@@ -31,23 +35,28 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: 'refund-policy',
+        element: <RefundPolicy />,
+      },
+      {
+        path: 'terms-conditions',
+        element: <Terms />,
+      },
+      {
+        path: 'about-us',
+        element: <AboutUs />,
+      },
+      {
         path: '*',
         element: <Error />,
       },
     ],
   },
 ]);
-// const router = createBrowserRouter(
-//   <Route path="/" element={<App />}>
-//     <Route index element={<Home />} />
-//     <Route path="contact" element={<Contact />} />
-//   </Route>
-// );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
     <RouterProvider router={router} />
   </React.StrictMode>
 );

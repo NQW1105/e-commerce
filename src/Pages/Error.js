@@ -17,8 +17,8 @@ const Error = () => {
         </Row>
         <Row>
           <p className="mx-auto pt-3 ">
-            You had visited the wrong page my friend... Here's the{' '}
-            <Link to="home">Homepage</Link>
+            This page does not exist my friend... Here's the{' '}
+            <Link to="/">Homepage</Link>
           </p>
         </Row>
       </Container>

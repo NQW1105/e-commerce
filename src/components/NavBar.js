@@ -6,9 +6,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Logo from '../images/no-pain-no-gain.png';
-import { Person, Cart, Search, Outlet } from 'react-bootstrap-icons';
+import { Person, Cart, Search } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
-import { NavLink } from 'react-bootstrap';
 
 // TO DO LIST :
 // Decide breakpoint and refactor all the 'expand'
@@ -23,8 +22,8 @@ function NavBar() {
       <Container fluid>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
-        <LinkContainer to="home">
-          <Navbar.Brand href="#home">
+        <LinkContainer to="/">
+          <Navbar.Brand>
             <img
               src={Logo}
               width="88"

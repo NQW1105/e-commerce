@@ -4,9 +4,6 @@ import { Helmet } from 'react-helmet';
 import NavBar from './components/NavBar';
 
 // React Components
-import Promotion from './Pages/Promotion';
-import Product from './Pages/Product';
-import Contact from './Pages/Contact';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 
@@ -16,6 +13,17 @@ import { Outlet } from 'react-router-dom';
 // optimumnutrition.com
 // tigerfitness.com
 // bodybuilding.com
+
+// Create fake cookie footer
+// Sudden popup for 1st time loading page
+
+// API to consider including
+// Telegram or google email for contact form
+// Create own for products
+// Motivating bodybuilding quotes???
+// Stripe/Paypal to integrate payment
+// Authentication/Security related
+// Guest able to create new account
 
 function App() {
   return (
@@ -29,9 +37,6 @@ function App() {
       </Helmet>
       <NavBar />
       <Outlet />
-      {/* <Promotion />
-      <Product />
-      <Contact /> */}
       <Footer />
     </div>
   );
