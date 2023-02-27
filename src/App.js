@@ -14,7 +14,7 @@ import { Outlet } from 'react-router-dom';
 // tigerfitness.com
 // bodybuilding.com
 
-// Create fake cookie footer
+// Create fake cookie pop-up footer
 // Sudden popup for 1st time loading page
 
 // API to consider including

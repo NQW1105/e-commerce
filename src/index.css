@@ -15,3 +15,67 @@ code {
 .text-justify {
   text-align: justify;
 }
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Product Slider */
+.slick-arrow.slick-prev::before,
+.slick-arrow.slick-next::before {
+  display: none;
+}
+
+.slick-arrow.slick-prev {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.slick-arrow.slick-next {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+@media only screen and (min-width: 750px) {
+  .slick-arrow.slick-prev {
+    left: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  .slick-arrow.slick-next {
+    right: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.slick-arrow.slick-prev,
+.slick-arrow.slick-prev:hover,
+.slick-arrow.slick-next,
+.slick-arrow.slick-next:hover {
+  background: #f1f5f9;
+  width: 2.5rem;
+  height: 5rem;
+  font-size: 2rem;
+  color: grey;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Carousel*/
+@media only screen and (min-width: 750px) {
+  .fix-carousel {
+    height: 80vh;
+    object-fit: cover;
+  }
+}
+
+/* Promo Section */
+@media only screen and (min-width: 750px) {
+  .promo-img {
+    height: 50vh;
+    object-fit: cover;
+  }
+}
