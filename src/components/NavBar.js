@@ -64,14 +64,14 @@ function NavBar() {
                 title="Promotions"
                 id={`offcanvasNavbarDropdown-expand-${expand}`}
               >
-                <LinkContainer to="promotion">
+                <LinkContainer to="/promotion/new-arrival">
                   <NavDropdown.Item>New Arrivals</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to="promotion2">
+                <LinkContainer to="/promotion/best-seller">
                   <NavDropdown.Item>Best Sellers</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Divider />
-                <LinkContainer to="promotion3">
+                <LinkContainer to="/promotion/clearance">
                   <NavDropdown.Item>Clearance Sales</NavDropdown.Item>
                 </LinkContainer>
               </NavDropdown>
@@ -81,8 +81,8 @@ function NavBar() {
                 title="Products"
                 id={`offcanvasNavbarDropdown-expand-${expand}`}
               >
-                <LinkContainer to="product">
-                  <NavDropdown.Item>Creatine Monohydrates</NavDropdown.Item>
+                <LinkContainer to="product/creatine">
+                  <NavDropdown.Item>Creatine </NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown
                   className="px-2"
@@ -90,10 +90,10 @@ function NavBar() {
                   id=""
                   drop="end"
                 >
-                  <LinkContainer to="product2">
+                  <LinkContainer to="product/pre-workout/BCAA">
                     <NavDropdown.Item>BCAA</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="product3">
+                  <LinkContainer to="product/pre-workout/energy">
                     <NavDropdown.Item>Energy Drinks</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
@@ -103,13 +103,13 @@ function NavBar() {
                   id=""
                   drop="end"
                 >
-                  <LinkContainer to="product4">
+                  <LinkContainer to="/product/protein/whey">
                     <NavDropdown.Item>Whey Protein</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="product5">
+                  <LinkContainer to="/product/protein/whey-isolates">
                     <NavDropdown.Item>Whey Protein Isolates</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to="product6">
+                  <LinkContainer to="/product/protein/vegan">
                     <NavDropdown.Item>Vegan Protein</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>

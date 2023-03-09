@@ -1,29 +1,18 @@
+// Modify page title and favicon
 import { Helmet } from 'react-helmet';
 
-// React-Bootstrap Components
-import NavBar from './components/NavBar';
-
-// React Components
-import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 
-// Some sample or inspiration websites
-// muscletech.com
-// gnc.com
-// optimumnutrition.com
-// tigerfitness.com
-// bodybuilding.com
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
-// Create fake cookie pop-up footer
-// Sudden popup for 1st time loading page
-
-// API to consider including
-// Telegram or google email for contact form
-// Create own for products
-// Motivating bodybuilding quotes???
-// Stripe/Paypal to integrate payment
+// TO DO LIST:
+// Include CRUD (Modyfing cart orders, Seller Mode)
+// Fetch API for product database
+// Telegram message or google email when user submit 'contact me' form
 // Authentication/Security related
-// Guest able to create new account
+// Stripe/Paypal API to integrate payment
+// Create fake cookie pop-up footer for 1st time loading
 
 function App() {
   return (
