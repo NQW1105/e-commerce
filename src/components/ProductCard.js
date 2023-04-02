@@ -9,12 +9,15 @@ const ProductCard = (props) => {
 
   const productLink = `/product/${id}`;
   return (
-    <Card border="0" style={{ width: '18rem' }}>
+    <Card border="0 bg-custom-bg">
       <LinkContainer to={productLink}>
-        <Card.Img variant="top" src={img} />
+        <Card.Img variant="top" src={img} className="cursor-pointer" />
       </LinkContainer>
       <Card.Body>
-        <Card.Title style={{ height: '3rem' }} className="text-overflow">
+        <Card.Title
+          style={{ height: '3rem', width: '16rem' }}
+          className="text-overflow"
+        >
           {name}
         </Card.Title>
         <Card.Text className="d-flex align-items-center">

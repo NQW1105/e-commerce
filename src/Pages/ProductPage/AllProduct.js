@@ -10,8 +10,10 @@ const AllProduct = () => {
 
   return (
     <div>
-      <h3>All Products</h3>
-      {allProduct}
+      <h3 className="py-5 m-0 text-center">All Products</h3>
+      <div className="d-flex flex-wrap justify-content-center pb-5">
+        {allProduct}
+      </div>
     </div>
   );
 };

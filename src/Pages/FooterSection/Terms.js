@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap';
 
 const Terms = () => {
   return (
-    <Container>
+    <Container className="py-5">
       <h3 className="py-3">Terms & Conditions</h3>
       <p className="pb-2 text-justify">
         PLEASE READ THE FOLLOWING TERMS AND CONDITIONS OF USE CAREFULLY BEFORE
@@ -12,7 +12,7 @@ const Terms = () => {
         please do not use this site.
       </p>
       <h5 className="py-3">Copyright</h5>
-      <p className="pb-5 text-justify">
+      <p className="pb-5 m-0 text-justify">
         The entire content included in this site, including but not limited to
         text, graphics or code is copyrighted. The collective work includes
         works that are licensed. ALL RIGHTS RESERVED, permission is granted to

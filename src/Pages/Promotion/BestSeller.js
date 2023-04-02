@@ -12,8 +12,10 @@ const BestSeller = () => {
 
   return (
     <div>
-      <h3>Best Seller</h3>
-      {bestSellProducts}
+      <h3 className="py-5 m-0 text-center">Best Seller</h3>
+      <div className="d-flex flex-wrap justify-content-center pb-5">
+        {bestSellProducts}
+      </div>
     </div>
   );
 };

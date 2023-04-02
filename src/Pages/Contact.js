@@ -1,31 +1,49 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 // Future work:
 // Include checkbox above button for terms and conditions
 // Clicking terms should pop up lorem ipsum text or rick roll gif teehee
+// Include post method to generate email
 
 const Contact = () => {
   const [valid, setValid] = useState(false);
+  const [success, setSuccess] = useState('d-none text-success');
+  const [btnDisabled, setBtnDisabled] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    title: '',
+    message: '',
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   function handleSubmit(event) {
-    // console.log(event);
     event.preventDefault();
     if (valid === false) {
       setValid(true);
+    }
+    if (event.target.checkValidity()) {
+      // Include post method to generate email
+      setSuccess('d-block text-success');
+      setBtnDisabled(true);
+      setTimeout(() => {
+        setSuccess('d-none text-success');
+        setBtnDisabled(false);
+      }, 3000);
     }
   }
 
   return (
     <Container>
       <Row>
-        <Col>
-          <h3 className="m-0 py-4">Contact Us</h3>
-          <p className="pb-4">
+        <Col className="py-5">
+          <h3 className="m-0">Contact Us</h3>
+          <p className="py-4">
             Hello! If you have any questions or need help on, our team is
             waiting to hear from you
           </p>
@@ -38,11 +56,21 @@ const Contact = () => {
                   placeholder="Your name"
                   size="sm"
                   required
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group as={Col} className="mb-3">
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control type="email" size="sm" required />
+                <Form.Control
+                  type="email"
+                  size="sm"
+                  required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
                 <Form.Control.Feedback type="invalid">
                   Please enter a valid email
                 </Form.Control.Feedback>
@@ -51,16 +79,39 @@ const Contact = () => {
 
             <Form.Group className="mb-3">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" placeholder="" size="sm" required />
+              <Form.Control
+                type="text"
+                placeholder=""
+                size="sm"
+                required
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Message</Form.Label>
-              <Form.Control as="textarea" rows={4} size="sm" required />
+              <Form.Control
+                as="textarea"
+                rows={4}
+                size="sm"
+                required
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+              />
               <Form.Control.Feedback type="invalid">
                 Hi there! Please let us know how we may support you
               </Form.Control.Feedback>
             </Form.Group>
-            <Button type="submit" className="mt-2 mb-5">
+            <p className={success} style={{ fontSize: '0.8rem' }}>
+              Thank you for reaching! We'll get back to you soon
+            </p>
+            <Button
+              type="submit"
+              className="mt-3 fw-semibold bg-custom-primary border-custom-primary"
+              disabled={btnDisabled}
+            >
               Send
             </Button>
           </Form>

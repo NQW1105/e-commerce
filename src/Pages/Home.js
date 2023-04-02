@@ -16,10 +16,8 @@ import BestSeller from '../images/best-seller.jpg';
 import ClearanceSales from '../images/clearance-sales.jpg';
 
 // TO DO LIST
-// Include text with button to route page
 // Hovering promo section should blur image and show button
 // Refactor product slider to exclude the texts
-// Make promo section responsive (small screen list them from top to bot)
 
 const Home = () => {
   const promoObj = [
@@ -29,20 +27,22 @@ const Home = () => {
   ];
   const promoSection = promoObj.map((item) => {
     return (
-      <Col className="p-0 w-100 h-100 position-relative">
+      <Col lg={4} className="p-0 position-relative" style={{ height: '60vh' }}>
         <div
           className="position-absolute top-50 start-50 translate-middle d-flex flex-column"
           style={{ zIndex: 1 }}
         >
-          <p>{item.title}</p>
+          <p className="fw-bold">{item.title}</p>
           <LinkContainer to={`/promotion/${item.link}`}>
-            <Button variant="dark">Explore</Button>
+            <Button className="bg-custom-primary border-custom-primary">
+              Explore
+            </Button>
           </LinkContainer>
         </div>
         <Image
           src={item.img}
-          className="w-100 opacity-50"
-          style={{ height: '60vh', objectFit: 'cover' }}
+          className="h-100 w-100 opacity-50"
+          style={{ objectFit: 'cover' }}
         ></Image>
       </Col>
     );

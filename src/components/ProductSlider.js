@@ -1,10 +1,9 @@
-import { Container, Row, Col } from 'react-bootstrap';
-import data from '../products.json';
-
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from 'react-icons/md';
+import { Container, Row, Col } from 'react-bootstrap';
+import data from '../products.json';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -34,6 +33,20 @@ const ProductSlider = () => {
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
     autoplay: true,
     autoplaySpeed: 5000,
     nextArrow: <NextArrow />,
@@ -53,7 +66,6 @@ const ProductSlider = () => {
           <Slider {...slideSettings} style={{ position: 'relative' }}>
             {data.products.map((category) => {
               return Object.values(category)[0].map((product) => {
-                // console.log(product);
                 return <ProductCard productObj={product} />;
               });
             })}

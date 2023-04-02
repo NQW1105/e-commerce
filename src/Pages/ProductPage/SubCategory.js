@@ -17,7 +17,11 @@ const SubCategory = () => {
     });
   });
 
-  return <div>{selectedProducts}</div>;
+  return (
+    <div className="d-flex flex-wrap justify-content-center pb-5">
+      {selectedProducts}
+    </div>
+  );
 };
 
 export default SubCategory;

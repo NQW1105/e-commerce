@@ -1,15 +1,12 @@
-import { Image } from 'react-bootstrap';
-import Nav from 'react-bootstrap/Nav';
-
+import { Image, Nav } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-
-import ProductSection from '../images/products.jpg';
-import Breadcrumbs from '../components/Breadcrumb';
-import MainCategory from './ProductPage/MainCategory';
-import SubCategory from './ProductPage/SubCategory';
+import ProductSection from '../../images/products.jpg';
+import Breadcrumbs from '../../components/Breadcrumb';
 
 const Product = () => {
+  // console.log(props);
+
   return (
     <div>
       <div className="position-relative">
@@ -33,7 +30,6 @@ const Product = () => {
         // onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         variant="tabs"
         fill
-        className="my-3"
       >
         <Nav.Item>
           <LinkContainer to="/product/">
@@ -53,7 +49,6 @@ const Product = () => {
       </Nav>
 
       <Outlet></Outlet>
-      {/* <MainCategory /> */}
     </div>
   );
 };

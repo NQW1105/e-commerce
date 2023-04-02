@@ -17,13 +17,17 @@ const MainCategory = () => {
     }
   });
 
-  // include condition for running loop on products
   return (
     <div>
-      <h3>
+      <h3 className="py-5 m-0 text-center">
         {chosenLink.charAt(0).toUpperCase() + chosenLink.slice(1)} Products
       </h3>
-      {selectedProducts}
+      {!selectedProducts.every((item) => item === undefined) && (
+        <div className="d-flex flex-wrap justify-content-center pb-5">
+          {selectedProducts}
+        </div>
+      )}
+
       <Outlet></Outlet>
     </div>
   );

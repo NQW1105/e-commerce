@@ -19,12 +19,12 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-light text-center">
+    <footer className="bg-custom-secondary text-center">
       <hr></hr>
-      <Container>
-        <Row className="py-3">
-          <Col md={4}>
-            <h5>Others</h5>
+      <Container className="py-4">
+        <Row className="">
+          <Col md={4} className="py-3">
+            <h5 className="mb-3">Others</h5>
             <LinkContainer to="about-us" style={{ cursor: 'pointer' }}>
               <p className="fs-6">About Us</p>
             </LinkContainer>
@@ -36,7 +36,7 @@ const Footer = () => {
             </LinkContainer>
           </Col>
 
-          <Col md={4}>
+          <Col md={4} className="py-3">
             <h5>We Accept</h5>
             <p>
               <a className="fs-1 px-1">
@@ -53,7 +53,7 @@ const Footer = () => {
               </a>
             </p>
           </Col>
-          <Col md={4}>
+          <Col md={4} className="py-3">
             <h5>Follow Us</h5>
             <p>
               <a

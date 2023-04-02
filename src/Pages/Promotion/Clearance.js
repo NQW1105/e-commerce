@@ -14,8 +14,10 @@ const ClearanceSales = () => {
 
   return (
     <div>
-      <h3>Clearance Sales</h3>
-      {oldProducts}
+      <h3 className="py-5 m-0 text-center">Clearance Sales</h3>
+      <div className="d-flex flex-wrap justify-content-center pb-5">
+        {oldProducts}
+      </div>
     </div>
   );
 };
