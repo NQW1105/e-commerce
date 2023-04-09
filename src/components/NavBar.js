@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CompanyBrand from '../images/no-pain-no-gain.png';
 import { Person, Cart, Search } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -14,21 +14,39 @@ import {
   Badge,
 } from 'react-bootstrap';
 import CartOrder from './CartOrder';
+import { auth } from '../firebaseConfig';
+import { onAuthStateChanged } from 'firebase/auth';
 import { CartContext } from '../App';
+import UserPopUp from '../components/UserPopup';
 
 // TO DO LIST :
 // Make off-canvas responsive on full width
 // when navbar toggle active make fix the order at md breakpoint and above
 
 function NavBar() {
+  const [totalOrder, setTotalOrder] = useContext(CartContext);
+
+  const [userLogin, setUserLogin] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [showNavCanvas, setShowNavCanvas] = useState(false);
-  const [totalOrder, setTotalOrder] = useContext(CartContext);
 
   const handleCloseCart = () => setShowCart(false);
   const handleShowCart = () => setShowCart(true);
   const handleCloseNavCanvas = () => setShowNavCanvas(false);
   const handleShowNavCanvas = () => setShowNavCanvas(true);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log('User logged in');
+        setUserLogin(true);
+        // pass user as props to UserPopup
+      } else {
+        console.log('No user');
+        setUserLogin(false);
+      }
+    });
+  }, []);
 
   return (
     <Navbar
@@ -42,7 +60,6 @@ function NavBar() {
           aria-controls={`offcanvasNavbar-expand-md`}
           onClick={handleShowNavCanvas}
         />
-
         <LinkContainer to="/">
           <Navbar.Brand className="m-0">
             <img
@@ -147,10 +164,7 @@ function NavBar() {
           </Offcanvas.Body>
         </Navbar.Offcanvas>
 
-        <div className="d-flex ">
-          <Button className="p-0 bg-custom-secondary border-custom-secondary text-custom-text">
-            <Person size={45} className="px-2 cursor-pointer" />
-          </Button>
+        <div className="d-flex gap-2 align-items-center">
           <Button
             onClick={handleShowCart}
             className="p-0 bg-custom-secondary border-custom-secondary text-custom-text position-relative"
@@ -165,6 +179,16 @@ function NavBar() {
               </Badge>
             )}
           </Button>
+          {userLogin ? (
+            <UserPopUp />
+          ) : (
+            <LinkContainer to="sign-in">
+              <Button className="p-0 bg-custom-secondary border-custom-secondary text-custom-text">
+                <Person size={32} className="cursor-pointer" />
+              </Button>
+            </LinkContainer>
+          )}
+
           <Offcanvas
             scroll
             show={showCart}

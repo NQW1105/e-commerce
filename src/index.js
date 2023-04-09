@@ -25,6 +25,9 @@ import RefundPolicy from './Pages/FooterSection/RefundPolicy';
 import CartOverview from './Pages/CartOverview';
 import Contact from './Pages/Contact';
 import Error from './Pages/Error';
+import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
+import ResetPassword from './Pages/ResetPassword';
 
 const router = createBrowserRouter([
   {
@@ -104,6 +107,18 @@ const router = createBrowserRouter([
       {
         path: 'check-out',
         element: <CartOverview />,
+      },
+      {
+        path: 'sign-in',
+        element: <SignIn />,
+      },
+      {
+        path: 'register',
+        element: <SignUp />,
+      },
+      {
+        path: 'reset-password',
+        element: <ResetPassword />,
       },
       {
         path: 'contact',
