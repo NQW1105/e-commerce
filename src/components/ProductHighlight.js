@@ -16,7 +16,6 @@ import {
 import RatingGenerator from './RatingGenerator';
 import { CartContext } from '../App';
 import { LinkContainer } from 'react-router-bootstrap';
-// import CartOrder from './CartOrder';
 
 // TODO List :
 // Update cart logo to include ordered quantity

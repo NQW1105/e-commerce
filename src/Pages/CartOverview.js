@@ -15,6 +15,10 @@ import {
 import { Cart, QuestionCircle } from 'react-bootstrap-icons';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
+import { db, payments } from '../firebaseConfig';
+import { collection, addDoc, onSnapshot } from 'firebase/firestore';
+import { createCheckoutSession } from '@stripe/firestore-stripe-payments';
+// import { User } from 'firebase/auth';
 
 const CartOverview = () => {
   const [totalOrder, setTotalOrder] = useContext(CartContext);
@@ -30,6 +34,43 @@ const CartOverview = () => {
     return (subTotal += order.quantity * order.price);
   });
   let deliveryCost = 8;
+
+  const checkOut = async () => {
+    // const docRef = await addDoc(
+    //   collection(db, `customers/${User?.uid}/checkout_sessions`),
+    //   {
+    //     price: '',
+    //     success_url: window.location.origin,
+    //     cancel_url: window.location.origin,
+    //   }
+    // );
+
+    // onSnapshot(docRef, (snap) => {
+    //   const { error, url } = snap.data();
+    //   if (error) {
+    //     alert(`An error occured: ${error.message}`);
+    //   }
+    //   if (url) {
+    //     window.location.assign(url);
+    //   }
+    // });
+    const session = await createCheckoutSession(payments, {
+      mode: 'payment',
+      line_items: [
+        {
+          price: 'price_1MxB83D1ifT0oUapZRfcd48c',
+          quantity: 2,
+        },
+        {
+          price: 'price_1MxNGYD1ifT0oUapnF3tCE8g',
+          quantity: 3,
+        },
+      ],
+      success_url: `${window.location.origin}?success=true`,
+      cancel_url: `${window.location.origin}?cancel=true`,
+    });
+    window.location.assign(session.url);
+  };
 
   return (
     <Container className="py-5">
@@ -291,6 +332,7 @@ const CartOverview = () => {
               <Button
                 className="bg-custom-primary border-custom-primary fw-bold w-100"
                 style={{ borderRadius: 0 }}
+                onClick={checkOut}
               >
                 PROCEED TO CHECKOUT
               </Button>
