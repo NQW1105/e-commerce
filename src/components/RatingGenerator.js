@@ -1,8 +1,9 @@
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 
 const RatingGenerator = (props) => {
+  // console.log(props);
   const {
-    rating: { fiveStar, fourStar, threeStar, twoStar, oneStar },
+    ratings: { fiveStar, fourStar, threeStar, twoStar, oneStar },
   } = props;
   const totalRating = oneStar + twoStar + threeStar + fourStar + fiveStar;
 

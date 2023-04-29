@@ -3,15 +3,22 @@ import RatingGenerator from './RatingGenerator';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const ProductCard = (props) => {
+  // console.log(props);
   const {
-    productObj: { id, img, name, price, rating },
+    productObj: {
+      id,
+      metadata: { image },
+      metadata: { price },
+      name,
+      ratings,
+    },
   } = props;
 
   const productLink = `/product/${id}`;
   return (
     <Card border="0 bg-custom-bg">
       <LinkContainer to={productLink}>
-        <Card.Img variant="top" src={img} className="cursor-pointer" />
+        <Card.Img variant="top" src={image} className="cursor-pointer" />
       </LinkContainer>
       <Card.Body>
         <Card.Title
@@ -21,7 +28,7 @@ const ProductCard = (props) => {
           {name}
         </Card.Title>
         <Card.Text className="d-flex align-items-center">
-          <RatingGenerator rating={rating} />
+          <RatingGenerator key={id} ratings={ratings} />
         </Card.Text>
         <Card.Text>${price}</Card.Text>
       </Card.Body>

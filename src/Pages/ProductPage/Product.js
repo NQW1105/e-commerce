@@ -32,19 +32,19 @@ const Product = () => {
         fill
       >
         <Nav.Item>
-          <LinkContainer to="/product/">
-            <Nav.Link>All</Nav.Link>
-          </LinkContainer>
+          {/* <LinkContainer to="/product/"> */}
+          <Nav.Link>All</Nav.Link>
+          {/* </LinkContainer> */}
         </Nav.Item>
         <Nav.Item>
-          <LinkContainer to="/product/protein/">
-            <Nav.Link>Protein</Nav.Link>
-          </LinkContainer>
+          {/* <LinkContainer to="/product/protein/"> */}
+          <Nav.Link>Protein</Nav.Link>
+          {/* </LinkContainer> */}
         </Nav.Item>
         <Nav.Item>
-          <LinkContainer to="/product/pre-workout/">
-            <Nav.Link>Pre-Workout</Nav.Link>
-          </LinkContainer>
+          {/* <LinkContainer to="/product/pre-workout/"> */}
+          <Nav.Link>Pre-Workout</Nav.Link>
+          {/* </LinkContainer> */}
         </Nav.Item>
       </Nav>
 

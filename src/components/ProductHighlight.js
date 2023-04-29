@@ -14,20 +14,22 @@ import {
   Modal,
 } from 'react-bootstrap';
 import RatingGenerator from './RatingGenerator';
-import { CartContext } from '../App';
+import { AppContext } from '../context/AppContext';
 import { LinkContainer } from 'react-router-bootstrap';
-
-// TODO List :
-// Update cart logo to include ordered quantity
 
 const ProductHighlight = () => {
   const [radioValue, setRadioValue] = useState('0');
   const [unit, setUnit] = useState(1);
   const [disabledBtn, setDisabledBtn] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
-  const [totalOrder, setTotalOrder] = useContext(CartContext);
+  const [totalOrder, setTotalOrder] = useContext(AppContext);
 
   let { productId } = useParams();
+  // console.log(productId);
+
+  // go through every item in array
+  // if id matching, select that object data
+  // render that object on page
   let productObj = '';
   data.products.map((category) => {
     return Object.values(category)[0].map((product) => {
@@ -37,13 +39,12 @@ const ProductHighlight = () => {
     });
   });
 
-  const id = productObj.id;
-  const img = productObj.img;
-  const overview = productObj.overview;
-  const nutrition = productObj.nutrition;
+  const productImg = productObj.stripe_metadata_image;
+  const productOverview = productObj.stripe_metadata_overview;
+  const nutritionLabel = productObj.stripe_metadata_nutritionLabel;
   const name = productObj.name;
-  const price = productObj.price;
-  const rating = productObj.rating;
+  const productPrice = productObj.stripe_metadata_price;
+  const productRatings = productObj.ratings;
 
   const radios = [
     { name: 'Chocolate', value: '0' },
@@ -58,35 +59,26 @@ const ProductHighlight = () => {
   const handleShow = () => setShowOrder(true);
   const addOrder = (event) => {
     event.preventDefault();
-    const cartData = {
-      id: id,
-      product: name,
+    const newOrder = {
+      // product id now represented by price property
+      price: 'price_1MxNGYD1ifT0oUapnF3tCE8g',
       quantity: unit,
-      flavor: radios[radioValue].name,
-      price: parseInt(price),
-      image: img,
     };
 
     if (
-      totalOrder.filter(
-        (order) =>
-          order.product === cartData.product && order.flavor === cartData.flavor
-      ).length > 0
+      totalOrder.filter((order) => order.price === newOrder.price).length > 0
     ) {
       const updatedOrder = totalOrder.map((order) => {
-        if (
-          order.product === cartData.product &&
-          order.flavor === cartData.flavor
-        ) {
+        if (order.price === newOrder.price) {
           return {
             ...order,
-            quantity: order.quantity + cartData.quantity,
+            quantity: order.quantity + newOrder.quantity,
           };
         }
       });
       setTotalOrder(updatedOrder);
     } else {
-      setTotalOrder(totalOrder.concat(cartData));
+      setTotalOrder(totalOrder.concat(newOrder));
     }
   };
 
@@ -96,14 +88,14 @@ const ProductHighlight = () => {
         <Row>
           <Col xs={12} md={6} className="d-flex justify-content-center">
             <div className="">
-              <Image src={img} style={{ height: '21rem' }} />
+              <Image src={productImg} style={{ height: '21rem' }} />
             </div>
           </Col>
           <Col xs={12} md={6}>
             <h3>{name}</h3>
-            <RatingGenerator rating={rating} />
-            <p className="py-3 text-justify">{overview}</p>
-            <h3>${price}</h3>
+            <RatingGenerator rating={productRatings} />
+            <p className="py-3 text-justify">{productOverview}</p>
+            <h3>${productPrice}</h3>
             <Form className="my-4" onSubmit={addOrder}>
               <ButtonGroup>
                 {radios.map((radio, idx) => (
@@ -115,7 +107,9 @@ const ProductHighlight = () => {
                     name="radio"
                     value={radio.value}
                     checked={radioValue === radio.value}
-                    onChange={(e) => setRadioValue(e.currentTarget.value)}
+                    onChange={(event) =>
+                      setRadioValue(event.currentTarget.value)
+                    }
                     className="me-3"
                     style={{ borderRadius: '0px' }}
                   >
@@ -191,7 +185,7 @@ const ProductHighlight = () => {
                       md={6}
                       className="d-flex justify-content-center justify-content-md-end justify-content-lg-center align-items-md-center"
                     >
-                      <Image src={img} style={{ height: '14rem' }} />
+                      <Image src={productImg} style={{ height: '14rem' }} />
                     </Col>
                     <Col
                       sm={12}
@@ -201,7 +195,7 @@ const ProductHighlight = () => {
                       <p className="fw-bold m-0">{name}</p>
                       <p className="m-0">Flavor : {radios[radioValue].name}</p>
                       <p className="m-0">Quantity : {unit}</p>
-                      <p className="m-0">${price} each</p>
+                      <p className="m-0">${productPrice} each</p>
                       <div className="d-flex flex-column flex-lg-row gap-4 w-100">
                         <LinkContainer
                           to="/check-out"
@@ -231,12 +225,12 @@ const ProductHighlight = () => {
             <Accordion alwaysOpen className="mb-3">
               <Accordion.Item eventKey="0">
                 <Accordion.Header>Product Overview</Accordion.Header>
-                <Accordion.Body>{overview}</Accordion.Body>
+                <Accordion.Body>{productOverview}</Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
                 <Accordion.Header>Supplement Fact</Accordion.Header>
                 <Accordion.Body className="d-flex justify-content-center">
-                  <Image fluid src={nutrition} className="py-3" />
+                  <Image fluid src={nutritionLabel} className="py-3" />
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>

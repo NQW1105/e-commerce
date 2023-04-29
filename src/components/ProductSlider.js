@@ -3,11 +3,12 @@ import {
   MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 import { Container, Row, Col } from 'react-bootstrap';
-import data from '../products.json';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ProductCard from './ProductCard';
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 function NextArrow(props) {
   const { className, onClick } = props;
@@ -28,6 +29,8 @@ function PrevArrow(props) {
 }
 
 const ProductSlider = () => {
+  const products = useContext(AppContext).products;
+
   const slideSettings = {
     infinite: true,
     speed: 1000,
@@ -52,6 +55,7 @@ const ProductSlider = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+
   return (
     <Container className="mt-4">
       <Row>
@@ -64,10 +68,8 @@ const ProductSlider = () => {
         </Col>
         <Col sm={12} md={8}>
           <Slider {...slideSettings} style={{ position: 'relative' }}>
-            {data.products.map((category) => {
-              return Object.values(category)[0].map((product) => {
-                return <ProductCard productObj={product} />;
-              });
+            {products.map((product) => {
+              return <ProductCard key={product.id} productObj={product} />;
             })}
           </Slider>
         </Col>

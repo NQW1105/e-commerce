@@ -30,15 +30,4 @@ const Breadcrumbs = () => {
   );
 };
 
-{
-  /* <LinkContainer to="/">
-  <Breadcrumb.Item
-    className="breadcrumb-item"
-    style={{ color: 'white', textDecoration: 'none' }}
-  >
-    Home
-  </Breadcrumb.Item>
-</LinkContainer>; */
-}
-
 export default Breadcrumbs;

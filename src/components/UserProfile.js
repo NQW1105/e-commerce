@@ -1,16 +1,18 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import { BoxArrowRight } from 'react-bootstrap-icons';
 import { auth } from '../firebaseConfig';
 import { signOut } from 'firebase/auth';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const UserPopup = () => {
-  const { email, displayName, photoURL } = auth.currentUser;
+const UserProfile = (props) => {
+  const [showOption, setShowOption] = useState(false);
+
+  const navigate = useNavigate();
   const photolessUser =
     'https://lh3.googleusercontent.com/FG3DgMZJTaToQnGjjnMIEHAxC90WmFHLj1mLzALqNtj4L71hvuwOQKR7qvQNiYgANa3lWHEYRWWyN7HERIhlWX-J2rk=s124';
-  const [showOption, setShowOption] = useState(false);
-  const navigate = useNavigate();
+
+  const { email, displayName, photoURL } = props.user;
 
   const showPopUp = () => {
     setShowOption(!showOption);
@@ -53,9 +55,13 @@ const UserPopup = () => {
                 cursor: 'pointer',
               }}
             ></Image>
-            <div className='w-auto'>
-              <p className="m-0 text-nowrap">{displayName == null ? '' : '@' + displayName}</p>
-              <p className="m-0 text-nowrap">{email == null ? '@Demo User' : email}</p>
+            <div className="w-auto">
+              <p className="m-0 text-nowrap">
+                {displayName == null ? '' : '@' + displayName}
+              </p>
+              <p className="m-0 text-nowrap">
+                {email == null ? '@Demo User' : email}
+              </p>
             </div>
           </div>
           <Button onClick={logOutUser} className="w-100">
@@ -68,4 +74,4 @@ const UserPopup = () => {
   );
 };
 
-export default UserPopup;
+export default UserProfile;

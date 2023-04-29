@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 // Future work:
-// Include checkbox above button for terms and conditions
-// Clicking terms should pop up lorem ipsum text or rick roll gif teehee
+// Submit form to firebase database
 // Include post method to generate email
 
 const Contact = () => {
@@ -105,7 +104,7 @@ const Contact = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <p className={success} style={{ fontSize: '0.8rem' }}>
-              Thank you for reaching! We'll get back to you soon
+              Thank you for reaching out! We'll get back to you soon
             </p>
             <Button
               type="submit"

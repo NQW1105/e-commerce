@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { CartContext } from '../App';
+import { AppContext } from '../context/AppContext';
 import {
   Container,
   Row,
@@ -21,7 +21,7 @@ import { createCheckoutSession } from '@stripe/firestore-stripe-payments';
 // import { User } from 'firebase/auth';
 
 const CartOverview = () => {
-  const [totalOrder, setTotalOrder] = useContext(CartContext);
+  const [totalOrder, setTotalOrder] = useContext(AppContext);
   const [showCartUpdate, setShowCartUpdate] = useState(false);
   const [removeUpdate, setRemoveUpdate] = useState(false);
 
@@ -54,22 +54,16 @@ const CartOverview = () => {
     //     window.location.assign(url);
     //   }
     // });
+
     const session = await createCheckoutSession(payments, {
       mode: 'payment',
-      line_items: [
-        {
-          price: 'price_1MxB83D1ifT0oUapZRfcd48c',
-          quantity: 2,
-        },
-        {
-          price: 'price_1MxNGYD1ifT0oUapnF3tCE8g',
-          quantity: 3,
-        },
-      ],
+      line_items: totalOrder,
       success_url: `${window.location.origin}?success=true`,
       cancel_url: `${window.location.origin}?cancel=true`,
     });
-    window.location.assign(session.url);
+    // console.log(totalOrder);
+    // console.log(session);
+    // window.location.assign(session.url);
   };
 
   return (

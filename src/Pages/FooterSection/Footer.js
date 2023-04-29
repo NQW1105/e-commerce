@@ -11,13 +11,14 @@ import {
   FaCcPaypal,
 } from 'react-icons/fa';
 
-// TO DO LIST :
-// Improve the padding/layout/font size
-// Make payment svg (visa, mc, amex, paypal) to colorful version
-// Hover effect on links/symbols
-// Scroll back to top with change route
-
 const Footer = () => {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="bg-custom-secondary text-center">
       <hr></hr>
@@ -26,31 +27,29 @@ const Footer = () => {
           <Col md={4} className="py-3">
             <h5 className="mb-3">Others</h5>
             <LinkContainer to="about-us" style={{ cursor: 'pointer' }}>
-              <p className="fs-6">About Us</p>
+              <p className="fs-6" onClick={scrollTop}>
+                About Us
+              </p>
             </LinkContainer>
             <LinkContainer to="refund-policy" style={{ cursor: 'pointer' }}>
-              <p className="fs-6">Refund Policy</p>
+              <p className="fs-6" onClick={scrollTop}>
+                Refund Policy
+              </p>
             </LinkContainer>
             <LinkContainer to="terms-conditions" style={{ cursor: 'pointer' }}>
-              <p className="fs-6">Terms of Service</p>
+              <p className="fs-6" onClick={scrollTop}>
+                Terms of Service
+              </p>
             </LinkContainer>
           </Col>
 
           <Col md={4} className="py-3">
             <h5>We Accept</h5>
             <p>
-              <a className="fs-1 px-1">
-                <FaCcVisa fill="bg-dark" />
-              </a>
-              <a className="fs-1 px-1">
-                <FaCcMastercard fill="bg-dark" />
-              </a>
-              <a className="fs-1 px-1">
-                <FaCcAmex fill="bg-dark" />
-              </a>
-              <a className="fs-1 px-1">
-                <FaCcPaypal fill="bg-dark" />
-              </a>
+              <FaCcVisa fill="bg-dark" className="fs-1 px-1" />
+              <FaCcMastercard fill="bg-dark" className="fs-1 px-1" />
+              <FaCcAmex fill="bg-dark" className="fs-1 px-1" />
+              <FaCcPaypal fill="bg-dark" className="fs-1 px-1" />
             </p>
           </Col>
           <Col md={4} className="py-3">
