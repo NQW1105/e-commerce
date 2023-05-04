@@ -44,10 +44,11 @@ function App() {
 export default App;
 
 // TO DO LIST:
-// Product page with checkboxes for promotions and category filter
-// ErrorBoundary for react...
+// Refactor ProductHighlight into smaller components (Target form, modal & accordion)
+// Refactor CartOverview
 // Finalize color theme, padding, font size
 // Make hero section presentable
+// Notify user to login/demo to checkout their cart items
 // Footer page : Hover effect on links/symbols
 // Clicking search/cart button shift brand logo on small screen, fix that...
 // Refactor context if possible
@@ -56,9 +57,9 @@ export default App;
 
 // Future Work:
 // Include price slider to filter product search
-// CRUD for cart system using Firestore
-// search should include name without spaces
-// search to also include brand name
+// CRUD to track logged in user cart items using Firestore
+// Search bar should still function even for product name without spaces
+// search bar to also include brand name
 // Change footer logo to colour version
 // Toast bootstrap on first time page load
 // Include bootstrap placeholder & spinner while async function still loading

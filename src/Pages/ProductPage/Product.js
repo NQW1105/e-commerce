@@ -8,7 +8,7 @@ const Product = () => {
   // console.log(props);
 
   return (
-    <div>
+    <>
       <div className="position-relative">
         <Image
           src={ProductSection}
@@ -25,31 +25,28 @@ const Product = () => {
           Products
         </h1>
       </div>
-      <Nav
+      {/* <Nav
         activeKey="/home"
         // onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         variant="tabs"
         fill
       >
         <Nav.Item>
-          {/* <LinkContainer to="/product/"> */}
           <Nav.Link>All</Nav.Link>
-          {/* </LinkContainer> */}
         </Nav.Item>
         <Nav.Item>
-          {/* <LinkContainer to="/product/protein/"> */}
           <Nav.Link>Protein</Nav.Link>
-          {/* </LinkContainer> */}
         </Nav.Item>
         <Nav.Item>
-          {/* <LinkContainer to="/product/pre-workout/"> */}
           <Nav.Link>Pre-Workout</Nav.Link>
-          {/* </LinkContainer> */}
         </Nav.Item>
-      </Nav>
+        <Nav.Item>
+          <Nav.Link>Vitamins & Supplements</Nav.Link>
+        </Nav.Item>
+      </Nav> */}
 
       <Outlet></Outlet>
-    </div>
+    </>
   );
 };
 

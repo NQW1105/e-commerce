@@ -14,10 +14,9 @@ const ProductCard = (props) => {
     },
   } = props;
 
-  const productLink = `/product/${id}`;
   return (
     <Card border="0 bg-custom-bg">
-      <LinkContainer to={productLink}>
+      <LinkContainer to={`/product/${id}`}>
         <Card.Img variant="top" src={image} className="cursor-pointer" />
       </LinkContainer>
       <Card.Body>

@@ -48,49 +48,28 @@ function NavBar() {
         <Offcanvas.Body className="py-0 ">
           <Nav className="justify-content-end flex-grow-1">
             <NavDropdown className="order-lg-1 " title="Promotions">
-              <LinkContainer to="/promotion/new-arrival">
+              <LinkContainer to="/promotion/new_arrival">
                 <NavDropdown.Item>New Arrivals</NavDropdown.Item>
               </LinkContainer>
-              <LinkContainer to="/promotion/best-seller">
+              <LinkContainer to="/promotion/best_seller">
                 <NavDropdown.Item>Best Sellers</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Divider />
-              <LinkContainer to="/promotion/clearance-sales">
+              <LinkContainer to="/promotion/clearance_sales">
                 <NavDropdown.Item>Clearance Sales</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
 
             <NavDropdown className="order-lg-2" title="Products">
               <LinkContainer to="/product/creatine">
-                <NavDropdown.Item>Creatine </NavDropdown.Item>
+                <NavDropdown.Item>Creatine</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown
-                className="py-0 px-3 px-lg-2"
-                title="Performance"
-                drop="end"
-              >
-                <LinkContainer to="/product/BCAA">
-                  <NavDropdown.Item>Pre-Workout</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/product/energy">
-                  <NavDropdown.Item>Energy Drinks</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
-              <NavDropdown
-                className="py-0 px-3 px-lg-2"
-                title="Protein"
-                drop="end"
-              >
-                <LinkContainer to="/product">
-                  <NavDropdown.Item>Whey Protein</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/product">
-                  <NavDropdown.Item>Whey Protein Isolates</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/product">
-                  <NavDropdown.Item>Mass Gainer</NavDropdown.Item>
-                </LinkContainer>
-              </NavDropdown>
+              <LinkContainer to="/product/pre-workout">
+                <NavDropdown.Item>Pre - Workout</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/product/protein">
+                <NavDropdown.Item>Proteins</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
 
             <LinkContainer to="contact">

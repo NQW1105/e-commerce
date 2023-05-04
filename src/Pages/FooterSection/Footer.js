@@ -21,7 +21,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-custom-secondary text-center">
-      <hr></hr>
+      <hr className="m-0"></hr>
       <Container className="py-4">
         <Row className="">
           <Col md={4} className="py-3">

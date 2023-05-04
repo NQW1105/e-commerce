@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import Arnold from '../images/arnold.png';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Error = () => {
+  // const error = useRouteError();
+  // console.log(error);
+
   return (
     <div>
       <h2 className="px-5 py-4 m-0">

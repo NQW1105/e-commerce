@@ -6,14 +6,8 @@ import ProductHighlight from '../components/ProductHighlight';
 
 // Pages
 import Home from '../Pages/Home';
-import Promotion from '../Pages/Promotion/Promotion';
-import NewArrival from '../Pages/Promotion/NewArrival';
-import BestSeller from '../Pages/Promotion/BestSeller';
-import ClearanceSales from '../Pages/Promotion/Clearance';
 import Product from '../Pages/ProductPage/Product';
 import AllProduct from '../Pages/ProductPage/AllProduct';
-import MainCategory from '../Pages/ProductPage/MainCategory';
-import SubCategory from '../Pages/ProductPage/SubCategory';
 import Terms from '../Pages/FooterSection/Terms';
 import AboutUs from '../Pages/FooterSection/AboutUs';
 import RefundPolicy from '../Pages/FooterSection/RefundPolicy';
@@ -35,19 +29,20 @@ const router = createBrowserRouter([
         element: <Product />,
         children: [
           {
-            path: 'new-arrival',
-            // element: <NewArrival />,
+            index: true,
             element: <AllProduct />,
           },
           {
-            path: 'best-seller',
-            // element: <BestSeller />,
+            path: 'new_arrival',
             element: <AllProduct />,
           },
           {
-            path: 'clearance-sales',
+            path: 'best_seller',
             element: <AllProduct />,
-            // element: <ClearanceSales />,
+          },
+          {
+            path: 'clearance_sales',
+            element: <AllProduct />,
           },
         ],
       },
@@ -65,48 +60,17 @@ const router = createBrowserRouter([
           },
           {
             path: 'creatine',
-            // element: <MainCategory />,
             element: <AllProduct />,
           },
           {
             path: 'pre-workout',
             element: <AllProduct />,
-
-            // element: <MainCategory />,
-            // children: [
-            //   {
-            //     path: 'BCAA',
-            //     element: <AllProduct />,
-            //     // element: <SubCategory />,
-            //   },
-            //   {
-            //     path: 'energy',
-            //     element: <AllProduct />,
-            //     // element: <SubCategory />,
-            //   },
-            // ],
           },
           {
             path: 'protein',
             element: <AllProduct />,
-            // element: <MainCategory />,
-            // children: [
-            //   {
-            //     path: 'whey',
-            //     element: <SubCategory />,
-            //   },
-            //   {
-            //     path: 'whey-isolates',
-            //     element: <SubCategory />,
-            //   },
-            //   {
-            //     path: 'vegan',
-            //     element: <SubCategory />,
-            //   },
-            // ],
           },
         ],
-        errorElement: <Error />,
       },
       {
         path: 'check-out',
@@ -141,10 +105,12 @@ const router = createBrowserRouter([
         element: <Terms />,
       },
       {
+        // 404 or 'not found' page
         path: '*',
         element: <Error />,
       },
     ],
+    errorElement: <Error />,
   },
 ]);
 

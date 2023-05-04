@@ -1,96 +1,107 @@
 // import { db } from '../../firebaseConfig';
 // import { collection, getDocs } from 'firebase/firestore';
-import { useState, useContext, useEffect, useCallback } from 'react';
-import {
-  Button,
-  Offcanvas,
-  Accordion,
-  Form,
-  Container,
-  Row,
-  Col,
-} from 'react-bootstrap';
-import { useForm, useWatch } from 'react-hook-form';
-import ProductCard from '../../components/ProductCard';
+import { useState, useContext, useEffect } from 'react';
+import { Button, Row, Col, Nav } from 'react-bootstrap';
 import { AppContext } from '../../context/AppContext';
 import { Filter } from 'react-bootstrap-icons';
+import { useLocation } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import ProductCard from '../../components/ProductCard';
+import FilterForm from '../../components/FilterForm';
+import DefaultDisplay from '../../components/DefaultDisplay';
 
 const AllProduct = () => {
-  const { register, watch, handleSubmit } = useForm();
-
   const products = useContext(AppContext).products;
-  const [showFilter, setShowFilter] = useState(false);
-  // const [checkboxStatus, setCheckboxStatus] = useState(watch());
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const currentUrl = useLocation()
+    .pathname.split('/')
+    .filter((route) => {
+      return route !== '';
+    });
+  const currentRoute = currentUrl[currentUrl.length - 1];
 
-  // const checkboxStatus = useWatch({ name: ['protein', 'pre-workout'] });
-  // const checkboxStatus = watch();
-  // console.log(checkboxStatus);
+  const [showFilter, setShowFilter] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [checkboxData, setCheckboxData] = useState({
+    protein: false,
+    'pre-workout': false,
+    'vitamins-supplements': false,
+    best_seller: false,
+    clearance_sales: false,
+    new_arrival: false,
+  });
 
   const closeFilter = () => setShowFilter(false);
   const openFilter = () => setShowFilter(true);
-  const updateCheckbox = (data) => {
-    console.log(data);
+  const updateCheckbox = (event) => {
+    const { id, checked } = event.target;
+    setCheckboxData((checkbox) => ({ ...checkbox, [id]: checked }));
   };
 
-  // useEffect(() => {
-  //   const status = Object.keys(checkboxStatus).some(
-  //     (checkbox) => checkboxStatus[checkbox] === true
-  //   );
-  //   // console.log(status);
+  useEffect(() => {
+    // Check if any category got selected
+    const categoryProduct = products.filter((product) => {
+      if (checkboxData[product.stripe_metadata_category] === true)
+        return product;
+    });
 
-  //   // Check if any category got selected
-  //   const categoryProduct = products.filter((product) => {
-  //     if (checkboxStatus[product.stripe_metadata_category] === true)
-  //       return product;
-  //   });
+    // Check if any promotion got selected
+    const promotion = products.filter((product) => {
+      let includeProduct = null;
+      const promoCategory = Object.keys(product.promotion);
+      promoCategory.map((promo) => {
+        if (checkboxData[promo] === true && product.promotion[promo] === true)
+          return (includeProduct = true);
+      });
+      if (includeProduct) return product;
+    });
 
-  //   // Check if any promotion got selected
-  //   const promotion = products.filter((product) => {
-  //     let includeProduct = null;
-  //     const promoCategory = Object.keys(product.promotion);
-  //     promoCategory.map((promo) => {
-  //       if (checkboxStatus[promo] === true && product.promotion[promo] === true)
-  //         return (includeProduct = true);
-  //     });
-  //     if (includeProduct) return product;
-  //   });
-
-  //   // console.log('Begin effect');
-  //   // console.log(checkboxStatus);
-  //   // console.log(categoryProduct);
-  //   // console.log(promotion);
-
-  //   // console.log(filteredProducts);
-  //   if (status === false) {
-  //     setFilteredProducts(products);
-  //   } else if (categoryProduct.length !== 0 && promotion.length !== 0) {
-  //     const update = categoryProduct.filter((catProduct) => {
-  //       let includeProduct = null;
-  //       const promoCategory = Object.keys(catProduct.promotion);
-  //       promoCategory.map((promo) => {
-  //         if (
-  //           checkboxStatus[promo] === true &&
-  //           catProduct.promotion[promo] === true
-  //         ) {
-  //           includeProduct = true;
-  //         }
-  //       });
-  //       if (includeProduct) return catProduct;
-  //     });
-  //     setFilteredProducts(update);
-  //   } else if (categoryProduct.length !== 0) {
-  //     setFilteredProducts(categoryProduct);
-  //   } else if (promotion.length !== 0) {
-  //     setFilteredProducts(promotion);
-  //   }
-  //   // console.log(filteredProducts);
-  // }, [checkboxStatus]);
-  // useEffect doesnt recognize checkboxStatus as dependency, need find ways to utilize watch() as state with setState method
-  // OR rewrite every checkbox as state :(
+    if (categoryProduct.length !== 0 && promotion.length !== 0) {
+      const update = categoryProduct.filter((catProduct) => {
+        let includeProduct = null;
+        const promoCategory = Object.keys(catProduct.promotion);
+        promoCategory.map((promo) => {
+          if (
+            checkboxData[promo] === true &&
+            catProduct.promotion[promo] === true
+          ) {
+            includeProduct = true;
+          }
+        });
+        if (includeProduct) return catProduct;
+      });
+      setFilteredProducts(update);
+    } else if (categoryProduct.length !== 0) {
+      setFilteredProducts(categoryProduct);
+    } else if (promotion.length !== 0) {
+      setFilteredProducts(promotion);
+    }
+  }, [checkboxData]);
 
   return (
-    <div>
+    <>
+      {/* Consider making component for category tabs */}
+      <Nav activeKey="/home" variant="tabs" fill>
+        <Nav.Item>
+          <LinkContainer to="/product">
+            <Nav.Link>All</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/product/protein">
+            <Nav.Link>Protein</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/product/pre-workout">
+            <Nav.Link>Pre-Workout</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/product/creatine">
+            <Nav.Link>Vitamins & Supplements</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+      </Nav>
       <Button
         variant="primary"
         className="d-lg-none w-100"
@@ -101,110 +112,34 @@ const AllProduct = () => {
       </Button>
       <Row className="m-0">
         <Col lg={4} className="px-lg-0 bg-white">
-          <Offcanvas show={showFilter} onHide={closeFilter} responsive="lg">
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title>Filters</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Accordion flush alwaysOpen className="w-100">
-                <h4 className="d-none d-lg-block p-3">Filters</h4>
-                <Form>
-                  <Accordion.Item eventKey="0">
-                    <Accordion.Header>By Category</Accordion.Header>
-                    <Accordion.Body>
-                      <Form.Check
-                        type="checkbox"
-                        id="protein"
-                        label="Protein"
-                        {...register('protein')}
-                        onChange={handleSubmit(updateCheckbox)}
-                      />
-                      <Form.Check
-                        type="checkbox"
-                        id="pre-workout"
-                        label="Pre-Workout"
-                        {...register('pre-workout')}
-                      />
-                      <Form.Check
-                        type="checkbox"
-                        id="vitamins-supplements"
-                        label="Vitamins & Supplements"
-                        {...register('vitamins-supplements')}
-                      />
-                    </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="1">
-                    <Accordion.Header>By Promotion</Accordion.Header>
-                    <Accordion.Body>
-                      <Form.Check
-                        type="checkbox"
-                        id="new-arrival"
-                        label="New Arrival"
-                        {...register('new_arrival')}
-                      />
-                      <Form.Check
-                        type="checkbox"
-                        id="best-seller"
-                        label="Best Seller"
-                        {...register('best_seller')}
-                      />
-                      <Form.Check
-                        type="checkbox"
-                        id="clearance-sales"
-                        label="Clearance Sales"
-                        {...register('clearance_sales')}
-                      />
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Form>
-
-                {/* <Accordion.Item eventKey="2">
-              <Accordion.Header>Price</Accordion.Header>
-              <Accordion.Body>Price slider </Accordion.Body>
-            </Accordion.Item> */}
-              </Accordion>
-            </Offcanvas.Body>
-          </Offcanvas>
+          <FilterForm
+            showFilter={showFilter}
+            closeFilter={closeFilter}
+            updateCheckbox={updateCheckbox}
+          />
         </Col>
-        <Col xs={12} lg={8} className="">
-          <div className="d-flex flex-wrap justify-content-center pb-5">
-            {/* {Object.keys(checkboxStatus).every(
-              (item) => checkboxStatus[item] === false
-            ) &&
-              products.map((product) => {
-                return <ProductCard key={product.id} productObj={product} />;
-              })} */}
-            {/* {filteredProducts &&
-              products.map((product) => {
-                return <ProductCard key={product.id} productObj={product} />;
-              })} */}
-            {/* {products
-              .filter((product) => {
-                if (checkboxStatus[product.stripe_metadata_category] === true)
-                  return product;
-              })
-              .filter((product) => {
-                let includeProduct = null;
-                const promoCategory = Object.keys(product.promotion);
-                promoCategory.map((promo) => {
-                  if (
-                    checkboxStatus[promo] === true &&
-                    product.promotion[promo] === true
-                  )
-                    return (includeProduct = true);
-                });
-                if (includeProduct) return product;
-              })
-              .map((product) => {
-                return <ProductCard key={product.id} productObj={product} />;
-              })} */}
-            {filteredProducts.map((product) => {
+        <Col
+          xs={12}
+          lg={8}
+          className="d-flex flex-wrap justify-content-center pb-5"
+        >
+          {/* Check if any checkbox got checked. Render all product if none checked */}
+          {Object.keys(checkboxData).every(
+            (item) => checkboxData[item] === false
+          ) ? (
+            <DefaultDisplay
+              currentRoute={currentRoute}
+              products={products}
+              checkboxData={checkboxData}
+            />
+          ) : (
+            filteredProducts.map((product) => {
               return <ProductCard key={product.id} productObj={product} />;
-            })}
-          </div>
+            })
+          )}
         </Col>
       </Row>
-    </div>
+    </>
   );
 };
 

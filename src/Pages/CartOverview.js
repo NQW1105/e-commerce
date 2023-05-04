@@ -21,7 +21,9 @@ import { createCheckoutSession } from '@stripe/firestore-stripe-payments';
 // import { User } from 'firebase/auth';
 
 const CartOverview = () => {
-  const [totalOrder, setTotalOrder] = useContext(AppContext);
+  const totalOrder = useContext(AppContext).totalOrder;
+  const setTotalOrder = useContext(AppContext).setTotalOrder;
+
   const [showCartUpdate, setShowCartUpdate] = useState(false);
   const [removeUpdate, setRemoveUpdate] = useState(false);
 
@@ -29,41 +31,32 @@ const CartOverview = () => {
   totalOrder.forEach(() => {
     return (totalItems += 1);
   });
+
   let subTotal = 0;
   totalOrder.forEach((order) => {
     return (subTotal += order.quantity * order.price);
   });
+
   let deliveryCost = 8;
 
   const checkOut = async () => {
-    // const docRef = await addDoc(
-    //   collection(db, `customers/${User?.uid}/checkout_sessions`),
-    //   {
-    //     price: '',
-    //     success_url: window.location.origin,
-    //     cancel_url: window.location.origin,
-    //   }
-    // );
-
-    // onSnapshot(docRef, (snap) => {
-    //   const { error, url } = snap.data();
-    //   if (error) {
-    //     alert(`An error occured: ${error.message}`);
-    //   }
-    //   if (url) {
-    //     window.location.assign(url);
-    //   }
-    // });
+    const checkoutItems = totalOrder.map((order) => {
+      return {
+        price: order.stripeId,
+        quantity: order.quantity,
+      };
+    });
+    // console.log(checkoutItems);
 
     const session = await createCheckoutSession(payments, {
       mode: 'payment',
-      line_items: totalOrder,
+      line_items: checkoutItems,
       success_url: `${window.location.origin}?success=true`,
       cancel_url: `${window.location.origin}?cancel=true`,
     });
     // console.log(totalOrder);
     // console.log(session);
-    // window.location.assign(session.url);
+    window.location.assign(session.url);
   };
 
   return (
@@ -114,6 +107,7 @@ const CartOverview = () => {
             <Button
               className="bg-custom-primary border-custom-primary fw-bold flex-grow-1 "
               style={{ borderRadius: 0 }}
+              onClick={checkOut}
             >
               Proceed to Checkout
             </Button>
@@ -169,7 +163,7 @@ const CartOverview = () => {
                       />
                     </Col>
                     <Col xs={8} lg={4}>
-                      <u className="fw-bold">{order.product}</u>
+                      <u className="fw-bold">{order.name}</u>
                       <p className="py-2 m-0">
                         <strong className="d-none d-lg-inline-block pe-2">
                           Flavor
