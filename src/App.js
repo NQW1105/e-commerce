@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import NavBar from './components/NavBar';
-import Footer from './Pages/FooterSection/Footer';
+import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 import { db } from './firebaseConfig';
 import { collection, getDocs } from 'firebase/firestore';
@@ -44,9 +44,8 @@ function App() {
 export default App;
 
 // TO DO LIST:
-// Refactor ProductHighlight into smaller components (Target form, modal & accordion)
-// Refactor CartOverview
 // Finalize color theme, padding, font size
+// Fix image webp to mobile compatible
 // Make hero section presentable
 // Notify user to login/demo to checkout their cart items
 // Footer page : Hover effect on links/symbols
@@ -62,6 +61,7 @@ export default App;
 // search bar to also include brand name
 // Change footer logo to colour version
 // Toast bootstrap on first time page load
+// Tracking system for customer order
 // Include bootstrap placeholder & spinner while async function still loading
 // Include more products; enough to include pagination
 // Navbar Component : Make off-canvas responsive on full width
@@ -70,6 +70,9 @@ export default App;
 // Other worthy API to include
 
 // References:
+// https://preview.themeforest.net/item/supplero-supplement-store-woocommerce-theme/full_screen_preview/30130289?_ga=2.121149760.911221535.1683309406-2052243194.1682778762&_gac=1.49604626.1683309406.EAIaIQobChMI9umk-azn_QIVQSlyCh0Cdw-AEAAYASAAEgLh5fD_BwE
+// https://preview.themeforest.net/item/nutritix-supplement-nutrition-woocommerce-theme/full_screen_preview/38300756?_ga=2.133609798.911221535.1683309406-2052243194.1682778762&_gac=1.242418998.1683309406.EAIaIQobChMI9umk-azn_QIVQSlyCh0Cdw-AEAAYASAAEgLh5fD_BwE
+// https://themegenix.net/wp/suxnix/
 // muscletech
 // optimum nutrition
 // GNC

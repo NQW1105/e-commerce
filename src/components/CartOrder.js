@@ -42,7 +42,7 @@ const CartOrder = () => {
           <Container>
             {totalOrder.map((order) => {
               return (
-                <Row className="py-2">
+                <Row key={order.id + order.flavor} className="py-2">
                   <Col className="p-0 d-flex justify-content-center">
                     <LinkContainer
                       to={`/product/${order.id}`}

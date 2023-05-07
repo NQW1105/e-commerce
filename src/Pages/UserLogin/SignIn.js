@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../firebaseConfig';
 import {
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signInAnonymously
+  signInAnonymously,
 } from 'firebase/auth';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -50,13 +50,13 @@ const SignIn = () => {
   };
 
   const demoSignIn = async () => {
-    try{
-      await signInAnonymously(auth)
-      navigate('/')
+    try {
+      await signInAnonymously(auth);
+      navigate('/');
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <Container className="my-5">
@@ -131,12 +131,12 @@ const SignIn = () => {
             </span>
           </button>
           <button
-              className="mt-3 google-btn py-2 px-3 w-100 fw-bold"
-              style={{ color: '#757575' }}
-              onClick={demoSignIn}
-            >
-              Demo User
-            </button>
+            className="mt-3 google-btn py-2 px-3 w-100 fw-bold"
+            style={{ color: '#757575' }}
+            onClick={demoSignIn}
+          >
+            Demo User
+          </button>
         </Col>
       </Row>
     </Container>

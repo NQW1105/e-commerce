@@ -2,13 +2,24 @@ import { Modal, Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const AddCartModal = (props) => {
-  //   console.log(props);
+  // console.log(props);
   const showOrder = props.showOrder;
   const handleClose = props.handleClose;
+
   const product = props.product;
   const unit = props.unit;
   const radios = props.radios;
   const radioValue = props.radioValue;
+
+  // const newOrder = {
+  //   id: productId,
+  //   image: product.stripe_metadata_image,
+  //   name: product.name,
+  //   flavor: radios[radioValue].name,
+  //   price: product.stripe_metadata_price,
+  //   quantity: unit,
+  //   stripeId: product.stripeId,
+  // };
 
   return (
     <Modal
@@ -21,7 +32,7 @@ const AddCartModal = (props) => {
       <Modal.Header closeButton className="position-relative py-4">
         <Modal.Title className="d-flex align-items-center gap-3 position-absolute start-50 translate-middle-x">
           <svg
-            class="add-to-cart__headline-icon add-to-cart__headline-icon--success"
+            className="add-to-cart__headline-icon add-to-cart__headline-icon--success"
             viewBox="0 0 20 20"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"

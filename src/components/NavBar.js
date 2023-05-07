@@ -18,6 +18,8 @@ function NavBar() {
   return (
     <Navbar
       // sticky="top"
+      // bg="primary"
+      // rgb(0, 85, 153)
       bg="custom-secondary"
       expand="lg"
       className="shadow-sm px-5 "
@@ -28,7 +30,7 @@ function NavBar() {
         <Navbar.Brand className="m-0">
           <img
             src={CompanyBrand}
-            width="88"
+            // width="88"
             height="88"
             className="d-inline-block align-top"
             alt="Brand logo"
@@ -45,7 +47,7 @@ function NavBar() {
         <Offcanvas.Header closeButton className="py-5">
           <Offcanvas.Title>Welcome !</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body className="py-0 ">
+        <Offcanvas.Body className="py-0">
           <Nav className="justify-content-end flex-grow-1">
             <NavDropdown className="order-lg-1 " title="Promotions">
               <LinkContainer to="/promotion/new_arrival">

@@ -1,22 +1,27 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-// Components
 import App from '../App';
-import ProductHighlight from '../components/ProductHighlight';
 
-// Pages
+// General Pages
 import Home from '../Pages/Home';
-import Product from '../Pages/ProductPage/Product';
+import Contact from '../Pages/Contact';
+import Error from '../Pages/Error';
+
+// Product Related Pages
+import ProductHero from '../Pages/ProductPage/ProductHero';
 import AllProduct from '../Pages/ProductPage/AllProduct';
+import ProductHighlight from '../Pages/ProductPage/ProductHighlight';
+import CartOverview from '../Pages/ProductPage/CartOverview';
+
+// Footer Related Pages
 import Terms from '../Pages/FooterSection/Terms';
 import AboutUs from '../Pages/FooterSection/AboutUs';
 import RefundPolicy from '../Pages/FooterSection/RefundPolicy';
-import CartOverview from '../Pages/CartOverview';
-import Contact from '../Pages/Contact';
-import Error from '../Pages/Error';
-import SignIn from '../Pages/SignIn';
-import SignUp from '../Pages/SignUp';
-import ResetPassword from '../Pages/ResetPassword';
+
+// User Related Pages
+import SignIn from '../Pages/UserLogin/SignIn';
+import SignUp from '../Pages/UserLogin/SignUp';
+import ResetPassword from '../Pages/UserLogin/ResetPassword';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +31,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       {
         path: 'promotion',
-        element: <Product />,
+        element: <ProductHero />,
         children: [
           {
             index: true,
@@ -48,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'product',
-        element: <Product />,
+        element: <ProductHero />,
         children: [
           {
             index: true,

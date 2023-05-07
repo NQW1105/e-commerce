@@ -15,7 +15,7 @@ const Breadcrumbs = () => {
       currentLink += `/${crumb}`;
 
       return (
-        <LinkContainer to={currentLink}>
+        <LinkContainer key={currentLink} to={currentLink}>
           <Breadcrumb.Item>
             {crumb.charAt(0).toUpperCase() + crumb.slice(1)}
           </Breadcrumb.Item>

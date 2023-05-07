@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
-import { auth } from '../firebaseConfig';
+import { auth } from '../../firebaseConfig';
 import { sendPasswordResetEmail } from 'firebase/auth';
 
 const ResetPassword = () => {

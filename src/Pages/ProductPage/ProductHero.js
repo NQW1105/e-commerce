@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import ProductSection from '../../images/products.jpg';
 import Breadcrumbs from '../../components/Breadcrumb';
 
-const Product = () => {
+const ProductHero = () => {
   // console.log(props);
 
   return (
@@ -50,4 +50,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductHero;

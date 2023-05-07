@@ -27,7 +27,12 @@ const Home = () => {
   ];
   const promoSection = promoObj.map((item) => {
     return (
-      <Col lg={4} className="p-0 position-relative" style={{ height: '60vh' }}>
+      <Col
+        key={item.link}
+        lg={4}
+        className="p-0 position-relative"
+        style={{ height: '60vh' }}
+      >
         <div
           className="position-absolute top-50 start-50 translate-middle d-flex flex-column"
           style={{ zIndex: 1 }}
