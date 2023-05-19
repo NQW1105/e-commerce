@@ -6,21 +6,25 @@ import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import RatingGenerator from '../../components/RatingGenerator';
 import { AppContext } from '../../context/AppContext';
 import Error from '../Error';
-import ProductDetails from '../../components/ProductDetails';
-import AddCartModal from '../../components/AddCartModal';
-import OrderForm from '../../components/OrderForm';
+import ProductDetails from '../../components/ProductHighlight/ProductDetails';
+import AddCartModal from '../../components/ProductHighlight/AddCartModal';
+import OrderForm from '../../components/ProductHighlight/OrderForm';
+import { storage } from '../../firebaseConfig';
+import { ref, getDownloadURL } from 'firebase/storage';
 
 const ProductHighlight = () => {
   const totalOrder = useContext(AppContext).totalOrder;
   const setTotalOrder = useContext(AppContext).setTotalOrder;
 
   let { productId } = useParams();
+  console.log(productId);
 
   const [error, setError] = useState(false);
   const [product, setProduct] = useState({});
   const [unit, setUnit] = useState(1);
   const [disabledBtn, setDisabledBtn] = useState(true);
   const [showOrder, setShowOrder] = useState(false);
+  const [productImg, setProductImg] = useState('');
   const [radioValue, setRadioValue] = useState('0');
   const radios = [
     { name: 'Chocolate', value: '0' },
@@ -98,9 +102,21 @@ const ProductHighlight = () => {
       }
     };
 
+    const getImage = () => {
+      getDownloadURL(ref(storage, `${productId}.webp`))
+        .then((url) => {
+          setProductImg(url);
+          console.log(url);
+        })
+        .catch((error) => {
+          // Handle any errors
+        });
+    };
+
     if (Object.keys(product).length === 0 || productId !== product.id)
       getProduct();
-  }, [productId, product, unit, error]);
+    if (productImg !== productId) getImage();
+  }, [productId, product, unit, error, productImg]);
 
   if (error) return <Error />;
 
@@ -109,7 +125,8 @@ const ProductHighlight = () => {
       <Row>
         <Col xs={12} md={6} className="d-flex justify-content-center">
           <Image
-            src={product.stripe_metadata_image}
+            // src={product.stripe_metadata_image}
+            src={productImg}
             alt="product-image"
             style={{ height: '21rem' }}
           />

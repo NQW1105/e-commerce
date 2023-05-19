@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStripePayments } from '@stripe/firestore-stripe-payments';
+import { getStorage } from 'firebase/storage';
 // import { getAnalytics } from 'firebase/analytics';
 
 // Your web app's Firebase configuration
@@ -25,3 +26,4 @@ export const payments = getStripePayments(app, {
   productsCollection: 'products',
   customersCollection: 'customers',
 });
+export const storage = getStorage(app);

@@ -6,14 +6,15 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 
 // Components
-import ImgCarousel from '../components/ImgCarousel';
-import CarouselCaption from '../components/CarouselCaption';
-import ProductSlider from '../components/ProductSlider';
+import ImgCarousel from '../components/Homepage/ImgCarousel';
+import CarouselCaption from '../components/Homepage/CarouselCaption';
+import ProductSlider from '../components/Homepage/ProductSlider';
 
 // Images
-import NewArrival from '../images/new-arrival.jpg';
-import BestSeller from '../images/best-seller.jpg';
-import ClearanceSales from '../images/clearance-sales.jpg';
+import NewArrival from '../images/new-arrival-web.jpg';
+import BestSeller from '../images/best-seller-web.jpg';
+import ClearanceSales from '../images/clearance-sales-web.jpg';
+import HeroSection from '../components/Homepage/HeroSection';
 
 // TO DO LIST
 // Hovering promo section should blur image and show button
@@ -31,23 +32,32 @@ const Home = () => {
         key={item.link}
         lg={4}
         className="p-0 position-relative"
-        style={{ height: '60vh' }}
+        // style={{ height: '60vh' }}
       >
         <div
-          className="position-absolute top-50 start-50 translate-middle d-flex flex-column"
+          className="position-absolute top-50 start-50 translate-middle w-100 d-flex flex-column"
           style={{ zIndex: 1 }}
         >
-          <p className="fw-bold">{item.title}</p>
-          <LinkContainer to={`/promotion/${item.link}`}>
-            <Button className="bg-custom-primary border-custom-primary">
+          <p
+            className="fw-semibold text-center promo-text"
+            style={{ color: '#212529' }}
+          >
+            {item.title}
+          </p>
+          <LinkContainer
+            to={`/promotion/${item.link}`}
+            style={{ width: '30%' }}
+            className="align-self-center"
+          >
+            <Button className="bg-alt-primary border-alt-primary borderless-btn fw-semibold shadow">
               Explore
             </Button>
           </LinkContainer>
         </div>
         <Image
           src={item.img}
-          className="h-100 w-100 opacity-50"
-          style={{ objectFit: 'cover' }}
+          className="h-100 w-100"
+          style={{ objectFit: 'cover', opacity: '60%' }}
         ></Image>
       </Col>
     );
@@ -55,11 +65,12 @@ const Home = () => {
 
   return (
     <div>
-      <ImgCarousel />
+      {/* <ImgCarousel /> */}
+      <HeroSection />
       <CarouselCaption />
       <ProductSlider />
-      <p className="text-center fs-3 my-4">Our Promotion</p>
-      <Container fluid className="mb-5 p-0">
+      <h3 className="text-center fs-3 my-4">Our Promotion</h3>
+      <Container fluid className="mb-5 px-0 pb-5">
         <Row className="m-0 p-0 w-100 h-100">{promoSection}</Row>
       </Container>
     </div>

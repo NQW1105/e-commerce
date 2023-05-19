@@ -18,23 +18,31 @@ const CartOverview = () => {
   const [showCartUpdate, setShowCartUpdate] = useState(false);
   const [removeUpdate, setRemoveUpdate] = useState(false);
   const [userError, setUserError] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
+  // console.log(userError);
 
   const checkOut = async () => {
-    const checkoutItems = totalOrder.map((order) => {
-      return {
-        price: order.stripeId,
-        quantity: order.quantity,
-      };
-    });
+    setDisableBtn(true);
+    try {
+      const checkoutItems = totalOrder.map((order) => {
+        return {
+          price: order.stripeId,
+          quantity: order.quantity,
+        };
+      });
 
-    const session = await createCheckoutSession(payments, {
-      mode: 'payment',
-      line_items: checkoutItems,
-      success_url: `${window.location.origin}?success=true`,
-      cancel_url: `${window.location.origin}?cancel=true`,
-    });
+      const session = await createCheckoutSession(payments, {
+        mode: 'payment',
+        line_items: checkoutItems,
+        success_url: `${window.location.origin}?success=true`,
+        cancel_url: `${window.location.origin}?cancel=true`,
+      });
 
-    window.location.assign(session.url);
+      window.location.assign(session.url);
+    } catch (error) {
+      setUserError(true);
+    }
+    setDisableBtn(false);
   };
 
   return (
@@ -48,7 +56,12 @@ const CartOverview = () => {
         setUserError={setUserError}
       />
 
-      <CartHeadings checkOut={checkOut} totalOrder={totalOrder} />
+      <CartHeadings
+        checkOut={checkOut}
+        disableBtn={disableBtn}
+        setDisableBtn={setDisableBtn}
+        totalOrder={totalOrder}
+      />
 
       {totalOrder.length === 0 ? (
         <EmptyCart />
@@ -60,7 +73,12 @@ const CartOverview = () => {
             setShowCartUpdate={setShowCartUpdate}
             setRemoveUpdate={setRemoveUpdate}
           />
-          <OrderSummary checkOut={checkOut} totalOrder={totalOrder} />
+          <OrderSummary
+            checkOut={checkOut}
+            disableBtn={disableBtn}
+            setDisableBtn={setDisableBtn}
+            totalOrder={totalOrder}
+          />
         </Row>
       )}
     </Container>

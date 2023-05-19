@@ -6,9 +6,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard';
 import { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 
 function NextArrow(props) {
   const { className, onClick } = props;
@@ -38,30 +38,36 @@ const ProductSlider = () => {
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 992,
         settings: {
           slidesToShow: 2,
         },
       },
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
+      // {
+      //   breakpoint: 576,
+      //   settings: {
+      //     slidesToShow: 1,
+      //   },
+      // },
     ],
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 5000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
 
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col sm={12} md={4}>
-          <h3>Our Products</h3>
-          <p className="text-justify">
+    <Container className="my-5">
+      <Row className="m-0">
+        <Col
+          sm={12}
+          md={4}
+          // className="d-md-flex flex-column justify-content-center"
+        >
+          <h3 className="mb-4">Our Products</h3>
+          <p className="text-justify lh-lg">
+            Gainz® offers an innovative line of performance supplements to meet
+            the needs of everyone - from fitness enthusiasts to elite athletes.
             From essential nutrition to cutting-edge formulas, we've got the
             products to match your unique needs.
           </p>

@@ -1,7 +1,7 @@
 import { Image, Nav } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import ProductSection from '../../images/products.jpg';
+import ProductSection from '../../images/products-web.jpg';
 import Breadcrumbs from '../../components/Breadcrumb';
 
 const ProductHero = () => {
@@ -9,19 +9,20 @@ const ProductHero = () => {
 
   return (
     <>
-      <div className="position-relative">
+      <div className="position-relative shadow-sm">
         <Image
           src={ProductSection}
-          className="opacity-75"
           style={{
-            height: '50vh',
             width: '100%',
             objectFit: 'cover',
-            // opacity: '90%',
+            opacity: '60%',
           }}
-        ></Image>
-        <Breadcrumbs />
-        <h1 className="position-absolute top-50 start-50 translate-middle text-white">
+        />
+        {/* <Breadcrumbs /> */}
+        <h1
+          className="position-absolute top-50 start-50 translate-middle"
+          style={{ color: '#3f3f46' }}
+        >
           Products
         </h1>
       </div>

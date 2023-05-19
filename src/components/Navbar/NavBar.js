@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CompanyBrand from '../images/no-pain-no-gain.png';
+import CompanyBrand from '../../images/Gainz.png';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavDropdown, Offcanvas } from 'react-bootstrap';
 import CartOrder from './CartOrder';
@@ -17,22 +17,18 @@ function NavBar() {
 
   return (
     <Navbar
-      // sticky="top"
-      // bg="primary"
-      // rgb(0, 85, 153)
-      bg="custom-secondary"
+      bg="alt-primary"
       expand="lg"
-      className="shadow-sm px-5 "
+      className="border-bottom border-1 border-secondary shadow px-3 px-lg-5 "
     >
-      <Navbar.Toggle onClick={openSideNav} />
+      <Navbar.Toggle onClick={openSideNav} className="m-0" />
 
       <LinkContainer to="/">
         <Navbar.Brand className="m-0">
           <img
             src={CompanyBrand}
-            // width="88"
-            height="88"
-            className="d-inline-block align-top"
+            height="55"
+            className="d-inline-block align-top p-0"
             alt="Brand logo"
           />
         </Navbar.Brand>
@@ -42,40 +38,61 @@ function NavBar() {
         placement="start"
         show={showNav}
         onHide={closeSideNav}
-        className="px-3 bg-custom-secondary"
+        className="px-3 bg-alt-primary text-white"
       >
         <Offcanvas.Header closeButton className="py-5">
           <Offcanvas.Title>Welcome !</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body className="py-0">
-          <Nav className="justify-content-end flex-grow-1">
-            <NavDropdown className="order-lg-1 " title="Promotions">
+          <Nav className="justify-content-end flex-grow-1 fw-bold navbar-font-size">
+            <LinkContainer to="/promotion">
+              <Nav.Link href="promotions" className="order-lg-1">
+                Promotions
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/product">
+              <Nav.Link href="products" className="order-lg-2">
+                Products
+              </Nav.Link>
+            </LinkContainer>
+
+            {/* <NavDropdown className="order-lg-1" title="Promotions">
               <LinkContainer to="/promotion/new_arrival">
-                <NavDropdown.Item>New Arrivals</NavDropdown.Item>
+                <NavDropdown.Item className="py-2 fs-6 text-center">
+                  New Arrivals
+                </NavDropdown.Item>
               </LinkContainer>
               <LinkContainer to="/promotion/best_seller">
-                <NavDropdown.Item>Best Sellers</NavDropdown.Item>
+                <NavDropdown.Item className="py-2 fs-6 text-center">
+                  Best Sellers
+                </NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Divider />
               <LinkContainer to="/promotion/clearance_sales">
-                <NavDropdown.Item>Clearance Sales</NavDropdown.Item>
+                <NavDropdown.Item className="py-2 fs-6 text-center">
+                  Clearance Sales
+                </NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
-
             <NavDropdown className="order-lg-2" title="Products">
               <LinkContainer to="/product/creatine">
-                <NavDropdown.Item>Creatine</NavDropdown.Item>
+                <NavDropdown.Item className="py-2  px-0 fs-6 text-center">
+                  Creatine
+                </NavDropdown.Item>
               </LinkContainer>
               <LinkContainer to="/product/pre-workout">
-                <NavDropdown.Item>Pre - Workout</NavDropdown.Item>
+                <NavDropdown.Item className="py-2  px-0 fs-6 text-center">
+                  Pre - Workout
+                </NavDropdown.Item>
               </LinkContainer>
               <LinkContainer to="/product/protein">
-                <NavDropdown.Item>Proteins</NavDropdown.Item>
+                <NavDropdown.Item className="py-2 px-0 fs-6 text-center">
+                  Proteins
+                </NavDropdown.Item>
               </LinkContainer>
-            </NavDropdown>
+            </NavDropdown> */}
 
             <LinkContainer to="contact">
-              <Nav.Link className="order-lg-3 text-custom-text" href="contact">
+              <Nav.Link className="order-lg-3" href="contact">
                 Contact Us
               </Nav.Link>
             </LinkContainer>
@@ -83,7 +100,7 @@ function NavBar() {
         </Offcanvas.Body>
       </Navbar.Offcanvas>
 
-      <div className="d-flex gap-2 align-items-center">
+      <div className="d-flex justify-content-end align-items-center">
         <SearchBar />
         <CartOrder />
         <UserIcon />

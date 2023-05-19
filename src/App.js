@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar/NavBar';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 import { db } from './firebaseConfig';
@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-custom-bg">
+    <div className="App bg-alt-bg">
       <Helmet>
         <title>Supplement Store</title>
         <meta
@@ -45,16 +45,13 @@ export default App;
 
 // TO DO LIST:
 // Finalize color theme, padding, font size
-// Fix image webp to mobile compatible
-// Make hero section presentable
-// Notify user to login/demo to checkout their cart items
-// Footer page : Hover effect on links/symbols
-// Clicking search/cart button shift brand logo on small screen, fix that...
-// Refactor context if possible
-// Learn how to use SASS and customize bootstrap the right way
-// Merge index.css to custom.scss
+// Fill footer section with more content
+// Up and down chevron when navbar item selected
+// Refactor context, scss, react, folder structure etc
+// Delete index.css, products.json files
 
 // Future Work:
+// Those that are supposed to be server side rendering, split them from client side rendering.
 // Include price slider to filter product search
 // CRUD to track logged in user cart items using Firestore
 // Search bar should still function even for product name without spaces

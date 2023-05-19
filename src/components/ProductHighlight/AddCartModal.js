@@ -29,21 +29,25 @@ const AddCartModal = (props) => {
       onHide={handleClose}
       className="modal-lg"
     >
-      <Modal.Header closeButton className="position-relative py-4">
-        <Modal.Title className="d-flex align-items-center gap-3 position-absolute start-50 translate-middle-x">
+      <Modal.Header
+        closeButton
+        className="position-relative py-4 bg-alt-primary"
+      >
+        <Modal.Title className="d-flex justify-content-center align-items-center gap-3 text-white position-absolute start-50 translate-middle-x">
           <svg
             className="add-to-cart__headline-icon add-to-cart__headline-icon--success"
             viewBox="0 0 20 20"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             style={{ width: '1.5rem', height: '1.5rem' }}
+            fill="white"
           >
             <path
               d="M9.52469304,14.1129604 L9.52360164,14.111869 L8.61882674,15.0166439 L3.85920873,10.2472033 L5.31514325,8.79236016 L8.62100955,12.1058663 L15.3582538,5.1579809 L16.8141883,6.61391542 L9.52469304,14.1129604 Z M10.0016371,0 C4.47803547,0 0,4.47694407 0,9.9994543 C0,15.5230559 4.47803547,20 10.0016371,20 C15.5230559,20 20,15.5230559 20,9.9994543 C20,4.47694407 15.5230559,0 10.0016371,0 L10.0016371,0 Z"
               id="Fill-1"
             ></path>
           </svg>
-          <span className="fw-bold fs-4">ADDED TO CART</span>
+          <span className="fw-bold fs-4 text-nowrap">ADDED TO CART</span>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="py-4 py-lg-5">
@@ -71,7 +75,7 @@ const AddCartModal = (props) => {
               <div className="d-flex flex-column flex-lg-row gap-4 w-100">
                 <LinkContainer to="/check-out" style={{ borderRadius: '0' }}>
                   <Button
-                    className="bg-custom-primary border-custom-primary fw-bold"
+                    className="bg-alt-action border-alt-action fw-semibold"
                     onClick={handleClose}
                   >
                     View Cart
@@ -79,7 +83,7 @@ const AddCartModal = (props) => {
                 </LinkContainer>
 
                 <Button
-                  className="bg-custom-primary border-custom-primary fw-bold"
+                  className="bg-alt-action border-alt-action fw-semibold"
                   style={{ borderRadius: '0' }}
                   onClick={handleClose}
                 >

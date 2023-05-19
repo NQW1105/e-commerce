@@ -20,10 +20,8 @@ const SearchResults = (props) => {
         <FailedSearch resetSearch={resetSearch} />
       ) : (
         <>
-          <h5 className="p-3 my-0 text-center left-divider">
-            Showing results for {search}
-          </h5>
-          <Row className="mx-0 left-divider">
+          <h5 className="p-3 my-0 text-center">Showing results for {search}</h5>
+          <Row className="mx-0">
             <Col xs={3} className="text-center px-0">
               <p className="mt-3">Products</p>
             </Col>

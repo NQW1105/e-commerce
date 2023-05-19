@@ -1,9 +1,11 @@
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Spinner } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const CartHeadings = (props) => {
   const totalOrder = props.totalOrder;
   const checkOut = props.checkOut;
+  const disableBtn = props.disableBtn;
+  const setDisableBtn = props.setDisableBtn;
 
   let totalItems = 0;
   totalOrder.forEach(() => {
@@ -31,19 +33,21 @@ const CartHeadings = (props) => {
             <span>
               <strong>ORDER TOTAL</strong> - {totalItems} ITEMS
             </span>
-            <span>${subTotal}</span>
+            <span className="fw-semibold">${subTotal}</span>
           </div>
-          <LinkContainer to="/" style={{ borderRadius: 0 }}>
-            <Button className="d-none d-md-inline-block bg-secondary border-secondary flex-grow-1">
+          <LinkContainer to="/product" style={{ borderRadius: 0 }}>
+            <Button className="d-none d-md-inline-block bg-alt-primary border-alt-primary flex-grow-1">
               Continue Shopping
             </Button>
           </LinkContainer>
           <Button
-            className="bg-custom-primary border-custom-primary fw-bold flex-grow-1 "
+            className="bg-alt-action border-alt-action fw-bold flex-grow-1"
             style={{ borderRadius: 0 }}
             onClick={checkOut}
+            disabled={disableBtn}
           >
-            Proceed to Checkout
+            {disableBtn && <Spinner animation="border" size="sm" />} Proceed to
+            Checkout
           </Button>
         </Col>
       )}

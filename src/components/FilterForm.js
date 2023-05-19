@@ -2,12 +2,17 @@ import { Offcanvas, Accordion, Form } from 'react-bootstrap';
 
 const FilterForm = ({ showFilter, closeFilter, updateCheckbox }) => {
   return (
-    <Offcanvas show={showFilter} onHide={closeFilter} responsive="lg">
+    <Offcanvas
+      show={showFilter}
+      onHide={closeFilter}
+      responsive="lg"
+      className="bg-alt-bg"
+    >
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Filters</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <Accordion flush alwaysOpen className="w-100">
+        <Accordion flush alwaysOpen className="w-100 bg-alt-bg">
           <h4 className="d-none d-lg-block p-3">Filters</h4>
           <Accordion.Item eventKey="0">
             <Accordion.Header>By Category</Accordion.Header>

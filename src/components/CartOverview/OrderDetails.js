@@ -10,16 +10,16 @@ const OrderDetails = (props) => {
   return (
     <Col lg={8}>
       <Container>
-        <Row className="d-none d-lg-flex bg-secondary text-light py-2 mb-3">
-          <Col lg={3} className="p-0"></Col>
+        <Row className="d-none d-lg-flex bg-alt-primary fw-semibold text-white py-2 mb-3">
+          <Col lg={2} className="p-0"></Col>
           <Col lg={4}>Item</Col>
-          <Col lg={1} className="text-center">
+          <Col lg={2} className="text-center">
             Price
           </Col>
-          <Col lg={3} className="text-center">
+          <Col lg={2} className="text-center">
             Qty
           </Col>
-          <Col lg={1} className="p-0">
+          <Col lg={2} className="p-0 text-center">
             Total
           </Col>
         </Row>

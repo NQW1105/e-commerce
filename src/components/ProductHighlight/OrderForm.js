@@ -18,13 +18,12 @@ const OrderForm = (props) => {
             key={idx}
             id={`radio-${idx}`}
             type="radio"
-            variant="custom-secondary"
+            // variant="alt-primary"
             name="radio"
             value={radio.value}
             checked={radioValue === radio.value}
             onChange={(event) => setRadioValue(event.currentTarget.value)}
-            className="me-3"
-            style={{ borderRadius: '0px' }}
+            className="me-3 borderless-btn fw-semibold flavor-btn"
           >
             {radio.name}
           </ToggleButton>
@@ -34,7 +33,7 @@ const OrderForm = (props) => {
         <Form.Group className="d-flex">
           <Button
             id="decrement"
-            className="fs-4 bg-custom-primary border-custom-primary fw-bold"
+            className="fs-4 bg-alt-action border-alt-action fw-bold"
             style={{ width: '3rem', borderRadius: '0' }}
             onClick={updateUnit}
             disabled={disabledBtn}
@@ -51,7 +50,7 @@ const OrderForm = (props) => {
           />
           <Button
             id="increment"
-            className="fs-4 bg-custom-primary border-custom-primary fw-bold"
+            className="fs-4 bg-alt-action border-alt-action fw-bold"
             style={{ width: '3rem', borderRadius: '0' }}
             onClick={updateUnit}
           >
@@ -60,7 +59,7 @@ const OrderForm = (props) => {
         </Form.Group>
         <Button
           type="submit"
-          className="flex-grow-1 bg-custom-primary border-custom-primary fw-bold"
+          className="flex-grow-1 bg-alt-action border-alt-action fw-bold"
           style={{ borderRadius: '0' }}
           onClick={handleShow}
         >

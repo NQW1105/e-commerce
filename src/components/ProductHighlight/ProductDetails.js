@@ -8,7 +8,9 @@ const ProductDetails = (props) => {
     <Accordion alwaysOpen className="mb-3">
       <Accordion.Item eventKey="0">
         <Accordion.Header>Product Overview</Accordion.Header>
-        <Accordion.Body>{stripe_metadata_overview}</Accordion.Body>
+        <Accordion.Body className="text-black">
+          {stripe_metadata_overview}
+        </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
         <Accordion.Header>Supplement Fact</Accordion.Header>

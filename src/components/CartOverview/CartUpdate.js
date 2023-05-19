@@ -11,13 +11,12 @@ const CartUpdate = (props) => {
   } = props;
 
   return (
-    <Row>
+    <Row className="px-3 mb-4">
       {showCartUpdate && (
         <Alert
           variant="success"
           dismissible
           onClose={() => setShowCartUpdate(false)}
-          className=""
         >
           Product quantity has been updated
         </Alert>
@@ -39,7 +38,7 @@ const CartUpdate = (props) => {
           onClose={() => setUserError(false)}
           className=""
         >
-          Please login or use the demo to checkout cart items
+          Please login or select demo to checkout items
         </Alert>
       )}
     </Row>

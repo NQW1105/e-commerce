@@ -43,7 +43,7 @@ const CartItems = (props) => {
   return (
     <>
       <Row className="align-items-center mb-3">
-        <Col xs={4} lg={3} className="p-0 d-flex justify-content-center">
+        <Col xs={4} lg={2} className="p-0 d-flex justify-content-center">
           <Image fluid src={order.image} style={{ height: '7.5rem' }} />
         </Col>
         <Col xs={8} lg={4}>
@@ -55,20 +55,20 @@ const CartItems = (props) => {
         </Col>
         <Col
           xs={{ span: 8, offset: 4 }}
-          lg={{ span: 1, offset: 0 }}
+          lg={{ span: 2, offset: 0 }}
           className="fw-bold text-lg-center"
         >
           ${order.price}
         </Col>
         <Col
           xs={{ span: 8, offset: 4 }}
-          lg={{ span: 3, offset: 0 }}
+          lg={{ span: 2, offset: 0 }}
           className="py-3 text-lg-center d-flex flex-row flex-lg-column justify-content-between align-items-lg-center position-relative"
         >
           <Form.Group className="d-flex">
             <Button
               id="decrease"
-              className="fs-5 px-0 bg-custom-primary border-custom-primary fw-bold"
+              className="fs-5 px-0 bg-alt-primary border-alt-primary fw-semibold"
               style={{ width: '2rem', borderRadius: '0' }}
               onClick={updateQuantity}
               disabled={disableBtn}
@@ -85,7 +85,7 @@ const CartItems = (props) => {
             />
             <Button
               id="increase"
-              className="fs-5 px-0 bg-custom-primary border-custom-primary fw-bold"
+              className="fs-5 px-0 bg-alt-primary border-alt-primary fw-semibold"
               style={{ width: '2rem', borderRadius: '0' }}
               onClick={updateQuantity}
             >
@@ -93,17 +93,17 @@ const CartItems = (props) => {
             </Button>
           </Form.Group>
 
-          <u
-            className="hover-visible cursor-pointer d-flex align-items-center remove-item"
+          <span
+            className="hover-visible cursor-pointer d-flex align-items-center remove-item border-bottom border-1 border-secondary text-secondary"
             onClick={removeItem}
           >
             Remove
-          </u>
+          </span>
         </Col>
         <Col
           xs={{ span: 8, offset: 4 }}
-          lg={{ span: 1, offset: 0 }}
-          className="p-0 d-none d-lg-block fw-bold"
+          lg={{ span: 2, offset: 0 }}
+          className="p-0 d-none d-lg-block fw-bold text-center"
         >
           ${(order.price * order.quantity).toFixed(2)}
         </Col>

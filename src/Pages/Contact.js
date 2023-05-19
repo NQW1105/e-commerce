@@ -46,7 +46,12 @@ const Contact = () => {
             Hello! If you have any questions or need help on, our team is
             waiting to hear from you
           </p>
-          <Form onSubmit={handleSubmit} noValidate validated={valid}>
+          <Form
+            onSubmit={handleSubmit}
+            noValidate
+            validated={valid}
+            className=""
+          >
             <Row>
               <Form.Group as={Col} className="mb-3">
                 <Form.Label>Name</Form.Label>
@@ -106,13 +111,15 @@ const Contact = () => {
             <p className={success} style={{ fontSize: '0.8rem' }}>
               Thank you for reaching out! We'll get back to you soon
             </p>
+            {/* <div className="d-lg-flex justify-content-center"> */}
             <Button
               type="submit"
-              className="mt-3 fw-semibold bg-custom-primary border-custom-primary"
+              className="my-4 fw-semibold bg-alt-action border-alt-action borderless-btn contact-btn"
               disabled={btnDisabled}
             >
               Send
             </Button>
+            {/* </div> */}
           </Form>
         </Col>
       </Row>

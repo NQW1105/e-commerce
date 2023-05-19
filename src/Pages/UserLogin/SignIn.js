@@ -59,7 +59,7 @@ const SignIn = () => {
   };
 
   return (
-    <Container className="my-5">
+    <Container className="my-5 py-5">
       <Row className="justify-content-center">
         <Col md={9} lg={7}>
           <h2 className="text-center pb-3">Sign in to your account</h2>
@@ -96,13 +96,30 @@ const SignIn = () => {
               </a>
             </LinkContainer>
 
-            <Button type="submit" className="my-3 w-100">
+            <Button
+              type="submit"
+              className="my-3 w-100 borderless-btn bg-alt-action border-alt-action fw-semibold"
+            >
               Sign In
             </Button>
-            <div className="position-relative">
+            <button
+              onClick={googleSignIn}
+              className="google-btn d-flex gap-3 justify-content-center align-items-center my-2 py-2 px-3 w-100"
+            >
+              <span>
+                <img
+                  src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                  style={{ height: '18px', width: '18px' }}
+                ></img>
+              </span>
+              <span className="fw-bold" style={{ color: '#757575' }}>
+                Google Sign In
+              </span>
+            </button>
+            <div className="position-relative py-4 mt-4">
               <div className="border border-1 w-100 position-absolute top-50"></div>
               <div className="d-flex justify-content-center">
-                <p className="m-0 px-2 bg-custom-bg" style={{ zIndex: 8 }}>
+                <p className="m-0 px-2 bg-alt-bg" style={{ zIndex: 8 }}>
                   Or continue with
                 </p>
               </div>
@@ -116,22 +133,9 @@ const SignIn = () => {
               Create an account
             </button>
           </LinkContainer>
+
           <button
-            onClick={googleSignIn}
-            className="google-btn d-flex gap-3 justify-content-center align-items-center my-3 py-2 px-3 w-100"
-          >
-            <span>
-              <img
-                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-                style={{ height: '18px', width: '18px' }}
-              ></img>
-            </span>
-            <span className="fw-bold" style={{ color: '#757575' }}>
-              Google Sign In
-            </span>
-          </button>
-          <button
-            className="mt-3 google-btn py-2 px-3 w-100 fw-bold"
+            className="my-3 google-btn py-2 px-3 w-100 fw-bold"
             style={{ color: '#757575' }}
             onClick={demoSignIn}
           >

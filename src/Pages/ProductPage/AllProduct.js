@@ -80,38 +80,46 @@ const AllProduct = () => {
   return (
     <>
       {/* Consider making component for category tabs */}
-      <Nav activeKey="/home" variant="tabs" fill>
+      <Nav
+        activeKey="/home"
+        variant="tabs"
+        fill
+        className="bg-alt-bg "
+        // style={{ fontWeight: '500' }}
+      >
         <Nav.Item>
-          <LinkContainer to="/product">
-            <Nav.Link>All</Nav.Link>
+          <LinkContainer to="/product" className="">
+            <Nav.Link className="filter-nav-link">All</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
           <LinkContainer to="/product/protein">
-            <Nav.Link>Protein</Nav.Link>
+            <Nav.Link className="filter-nav-link">Protein</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
           <LinkContainer to="/product/pre-workout">
-            <Nav.Link>Pre-Workout</Nav.Link>
+            <Nav.Link className="filter-nav-link">Pre-Workout</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
           <LinkContainer to="/product/creatine">
-            <Nav.Link>Vitamins & Supplements</Nav.Link>
+            <Nav.Link className="filter-nav-link">
+              Vitamins & Supplements
+            </Nav.Link>
           </LinkContainer>
         </Nav.Item>
       </Nav>
       <Button
-        variant="primary"
+        variant="alt-action"
         className="d-lg-none w-100"
         onClick={openFilter}
         style={{ borderRadius: 0 }}
       >
         <Filter /> Filter
       </Button>
-      <Row className="m-0">
-        <Col lg={4} className="px-lg-0 bg-white">
+      <Row className="m-0 p-5">
+        <Col lg={4} className="px-lg-0">
           <FilterForm
             showFilter={showFilter}
             closeFilter={closeFilter}
@@ -123,20 +131,26 @@ const AllProduct = () => {
           lg={8}
           className="d-flex flex-wrap justify-content-center pb-5"
         >
-          {/* Check if any checkbox got checked. Render all product if none checked */}
-          {Object.keys(checkboxData).every(
-            (item) => checkboxData[item] === false
-          ) ? (
-            <DefaultDisplay
-              currentRoute={currentRoute}
-              products={products}
-              checkboxData={checkboxData}
-            />
-          ) : (
-            filteredProducts.map((product) => {
-              return <ProductCard key={product.id} productObj={product} />;
-            })
-          )}
+          <Row>
+            {/* Check if any checkbox got checked. Render all product if none checked */}
+            {Object.keys(checkboxData).every(
+              (item) => checkboxData[item] === false
+            ) ? (
+              <DefaultDisplay
+                currentRoute={currentRoute}
+                products={products}
+                checkboxData={checkboxData}
+              />
+            ) : (
+              filteredProducts.map((product) => {
+                return (
+                  <Col xs={6}>
+                    <ProductCard key={product.id} productObj={product} />
+                  </Col>
+                );
+              })
+            )}
+          </Row>
         </Col>
       </Row>
     </>

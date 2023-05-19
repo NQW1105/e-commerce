@@ -5,7 +5,7 @@ const MatchedProduct = (props) => {
   const product = props.product;
 
   return (
-    <Row className="py-2 mx-0 left-divider">
+    <Row className="py-2 mx-0">
       <hr className="mt-1 mb-3 px-0"></hr>
       <Col xs={3} className="text-center px-0">
         <LinkContainer to={`/product/${product.id}`} style={{ height: '6rem' }}>

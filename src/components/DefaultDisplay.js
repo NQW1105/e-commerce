@@ -1,4 +1,5 @@
 import ProductCard from './ProductCard';
+import { Col } from 'react-bootstrap';
 
 const DefaultDisplay = ({ currentRoute, products, checkboxData }) => {
   const categoryGroup = ['protein', 'vitamins-supplements', 'pre-workout'];
@@ -8,7 +9,11 @@ const DefaultDisplay = ({ currentRoute, products, checkboxData }) => {
     <>
       {(currentRoute === 'product' || currentRoute === 'promotion') &&
         products.map((product) => {
-          return <ProductCard key={product.id} productObj={product} />;
+          return (
+            <Col xs={6}>
+              <ProductCard key={product.id} productObj={product} />
+            </Col>
+          );
         })}
 
       {/* Render if route belongs to any category */}
@@ -26,7 +31,11 @@ const DefaultDisplay = ({ currentRoute, products, checkboxData }) => {
             }
           })
           .map((product) => {
-            return <ProductCard key={product.id} productObj={product} />;
+            return (
+              <Col xs={6}>
+                <ProductCard key={product.id} productObj={product} />
+              </Col>
+            );
           })}
 
       {/* Render if route belongs to any promotion */}
@@ -38,7 +47,11 @@ const DefaultDisplay = ({ currentRoute, products, checkboxData }) => {
             }
           })
           .map((product) => {
-            return <ProductCard key={product.id} productObj={product} />;
+            return (
+              <Col xs={6}>
+                <ProductCard key={product.id} productObj={product} />
+              </Col>
+            );
           })}
     </>
   );

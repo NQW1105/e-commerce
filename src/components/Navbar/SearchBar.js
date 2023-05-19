@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Search } from 'react-bootstrap-icons';
 import { Form, Offcanvas, Row, Col, Button } from 'react-bootstrap';
-import { AppContext } from '../context/AppContext';
-import SearchResults from './SearchResults';
+import { AppContext } from '../../context/AppContext';
+import SearchResults from '../SearchFeature/SearchResults';
 
 const SearchBar = () => {
   const [search, setSearch] = useState('');
@@ -17,19 +17,16 @@ const SearchBar = () => {
 
   return (
     <>
-      <Button
-        onClick={handleSearch}
-        className="p-0 bg-custom-secondary border-custom-secondary text-custom-text"
-      >
+      <Button onClick={handleSearch} className="p-2 btn-nav-custom">
         <Search size={25} />
       </Button>
       <Offcanvas
         show={showSearch}
         onHide={handleSearch}
         placement="top"
-        className="h-100"
+        className="h-100 bg-alt-bg"
       >
-        <Offcanvas.Header closeButton>
+        <Offcanvas.Header closeButton className="bg-alt-primary">
           <Offcanvas.Title className="pe-3 my-3 w-100">
             <Form.Control
               placeholder="Search for products"
@@ -40,7 +37,7 @@ const SearchBar = () => {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <hr className="m-0"></hr>
-        <Offcanvas.Body className="p-0">
+        <Offcanvas.Body className="p-0 bg-alt-background">
           <Row className="mx-0 h-100">
             {search && (
               <Col md={9} className="mx-0 px-0 h-100 order-md-2">
@@ -51,7 +48,7 @@ const SearchBar = () => {
                 />
               </Col>
             )}
-            <Col md={3} className="px-5 order-md-1 top-divider">
+            <Col md={3} className="px-5 order-md-1 top-divider border-end">
               <h5 className="my-4">Popular Searches</h5>
               <p className="">whey protein</p>
               <p className="">creatine</p>

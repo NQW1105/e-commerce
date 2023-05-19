@@ -15,15 +15,20 @@ const ProductCard = (props) => {
   } = props;
 
   return (
-    <Card border="0 bg-custom-bg">
+    <Card
+      border="0 bg-alt-bg"
+      // style={{ width: '16rem' }}
+    >
       <LinkContainer to={`/product/${id}`}>
-        <Card.Img variant="top" src={image} className="cursor-pointer" />
+        <Card.Img
+          variant="top"
+          src={image}
+          // onError={`../images/products/${id}.webp`}
+          className="cursor-pointer img-fluid"
+        />
       </LinkContainer>
-      <Card.Body>
-        <Card.Title
-          style={{ height: '3rem', width: '16rem' }}
-          className="text-overflow"
-        >
+      <Card.Body className="text-wrap">
+        <Card.Title style={{ height: '3rem' }} className="text-overflow">
           {name}
         </Card.Title>
         <Card.Text className="d-flex align-items-center">

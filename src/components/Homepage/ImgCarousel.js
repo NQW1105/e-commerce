@@ -1,9 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
 
 // Images
-import Slide1 from '../images/home1.jpg';
-import Slide2 from '../images/home2.jpg';
-import Slide3 from '../images/home3.jpg';
+import Slide1 from '../../images/home1.jpg';
+import Slide2 from '../../images/home2.jpg';
+import Slide3 from '../../images/home3.jpg';
 
 const ImgCarousel = () => {
   return (
