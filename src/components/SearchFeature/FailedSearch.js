@@ -4,7 +4,7 @@ const FailedSearch = (props) => {
   const resetSearch = props.resetSearch;
 
   return (
-    <div className="order-md-2 d-flex flex-column justify-content-center align-items-center">
+    <div className="h-100 order-md-2 d-flex flex-column justify-content-center align-items-center">
       <h5 className="py-4">No matching results...</h5>
       <Button
         onClick={resetSearch}

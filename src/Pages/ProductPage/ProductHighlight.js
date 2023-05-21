@@ -17,7 +17,7 @@ const ProductHighlight = () => {
   const setTotalOrder = useContext(AppContext).setTotalOrder;
 
   let { productId } = useParams();
-  console.log(productId);
+  // console.log(productId);
 
   const [error, setError] = useState(false);
   const [product, setProduct] = useState({});
@@ -106,7 +106,7 @@ const ProductHighlight = () => {
       getDownloadURL(ref(storage, `${productId}.webp`))
         .then((url) => {
           setProductImg(url);
-          console.log(url);
+          // console.log(url);
         })
         .catch((error) => {
           // Handle any errors

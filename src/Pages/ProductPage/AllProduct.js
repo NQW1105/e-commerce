@@ -104,9 +104,7 @@ const AllProduct = () => {
         </Nav.Item>
         <Nav.Item>
           <LinkContainer to="/product/creatine">
-            <Nav.Link className="filter-nav-link">
-              Vitamins & Supplements
-            </Nav.Link>
+            <Nav.Link className="filter-nav-link">Others</Nav.Link>
           </LinkContainer>
         </Nav.Item>
       </Nav>

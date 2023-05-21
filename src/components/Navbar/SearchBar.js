@@ -40,7 +40,7 @@ const SearchBar = () => {
         <Offcanvas.Body className="p-0 bg-alt-background">
           <Row className="mx-0 h-100">
             {search && (
-              <Col md={9} className="mx-0 px-0 h-100 order-md-2">
+              <Col md={9} className="mx-0 px-0 order-md-2 border-start">
                 <SearchResults
                   search={search}
                   resetSearch={resetSearch}
@@ -48,7 +48,7 @@ const SearchBar = () => {
                 />
               </Col>
             )}
-            <Col md={3} className="px-5 order-md-1 top-divider border-end">
+            <Col md={3} className="px-5 order-md-1 top-divider">
               <h5 className="my-4">Popular Searches</h5>
               <p className="">whey protein</p>
               <p className="">creatine</p>

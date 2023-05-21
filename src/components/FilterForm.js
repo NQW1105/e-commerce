@@ -8,7 +8,7 @@ const FilterForm = ({ showFilter, closeFilter, updateCheckbox }) => {
       responsive="lg"
       className="bg-alt-bg"
     >
-      <Offcanvas.Header closeButton>
+      <Offcanvas.Header closeButton className="filter-offcanvas">
         <Offcanvas.Title>Filters</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>

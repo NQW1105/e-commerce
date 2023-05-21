@@ -44,27 +44,30 @@ function App() {
 export default App;
 
 // TO DO LIST:
-// Finalize color theme, padding, font size
-// Fill footer section with more content
-// Up and down chevron when navbar item selected
-// Refactor context, scss, react, folder structure etc
-// Delete index.css, products.json files
+// Make product name visible on mobile for product slider and product filtering page
+// Make product page banner presentable on mobile
+// Adjust product slider arrow
+// Refactor context, scss, react, folder structure etc, so they look clean and readable
+// Delete or separate unnecessary files like index.css, products.json files
+// Update readme to highlight project
+// Selecting promotion tab on navbar or (new-arrival, best-seller, clearance-sales) button should filter product list
+// Those that are supposed to be server side rendering, split them from client side rendering using firebase
+// CRUD...Logged in user should be able to have their cart items saved; Especially when checkout failed/canceled
+// Include bootstrap placeholder & spinner while async function still loading
 
 // Future Work:
-// Those that are supposed to be server side rendering, split them from client side rendering.
-// Include price slider to filter product search
-// CRUD to track logged in user cart items using Firestore
+// Include more products and other bodybuilding brand; enough to include pagination
+// Fill footer section with more content
+// Replace footer logo with presentable ones
+// Contact us form should email website owner while sender should received notification/email ticket
+// Price range and brand filter
+// Include more flavor based on product and supplement fact should be updated accordingly
+// Option to switch delivery option; this should update the order total price
+// Create own react slider instead of using npm package... Current package made too many get request to load
 // Search bar should still function even for product name without spaces
-// search bar to also include brand name
-// Change footer logo to colour version
+// Search bar to also include brand name
 // Toast bootstrap on first time page load
-// Tracking system for customer order
-// Include bootstrap placeholder & spinner while async function still loading
-// Include more products; enough to include pagination
-// Navbar Component : Make off-canvas responsive on full width
-// when navbar toggle active make fix the order at md breakpoint and above
-// Email user when they submit 'contact me' form
-// Other worthy API to include
+// Tracking/order ID system for customer order
 
 // References:
 // https://preview.themeforest.net/item/supplero-supplement-store-woocommerce-theme/full_screen_preview/30130289?_ga=2.121149760.911221535.1683309406-2052243194.1682778762&_gac=1.49604626.1683309406.EAIaIQobChMI9umk-azn_QIVQSlyCh0Cdw-AEAAYASAAEgLh5fD_BwE

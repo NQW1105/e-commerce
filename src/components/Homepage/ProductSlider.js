@@ -50,7 +50,7 @@ const ProductSlider = () => {
       //   },
       // },
     ],
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 5000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -61,7 +61,7 @@ const ProductSlider = () => {
       <Row className="m-0">
         <Col
           sm={12}
-          md={4}
+          lg={4}
           // className="d-md-flex flex-column justify-content-center"
         >
           <h3 className="mb-4">Our Products</h3>
@@ -72,7 +72,7 @@ const ProductSlider = () => {
             products to match your unique needs.
           </p>
         </Col>
-        <Col sm={12} md={8}>
+        <Col sm={12} lg={8}>
           <Slider {...slideSettings} style={{ position: 'relative' }}>
             {products.map((product) => {
               return <ProductCard key={product.id} productObj={product} />;
